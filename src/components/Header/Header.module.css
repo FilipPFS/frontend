@@ -1,0 +1,41 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 80px;
+    background-color: rgb(22, 22, 44);
+}
+
+.header h1 {
+    color: white;
+}
+
+.navigation {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+    color: white;
+}
+
+.navigation a {
+    color: white;
+    font-size: 20px;
+}
+
+.account {
+    padding: 0 35px;
+}
+
+.cartBlock {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.cartIcon {
+    font-size: 32px;
+}
+
+.cartBlock span {
+    font-size: 20px;
+}

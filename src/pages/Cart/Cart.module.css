@@ -1,0 +1,79 @@
+.container {
+    display: flex;
+}
+
+.cartProducts {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+    padding: 20px;
+}
+
+.product {
+    display: flex;
+    gap: 20px;
+}
+
+.imgContainer {
+    background-color: rgb(243, 241, 238);
+    padding: 30px;
+    width: 30%;
+    border-radius: 20px;
+}
+
+.product img {
+    width: 100%;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 40px 0;
+}
+
+.infoContainer h1 {
+    font-size: 40px;
+}
+
+.infoContainer p {
+    font-size: 24px;
+}
+
+.adjustQuantity {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    gap: 10px;
+}
+
+.adjustQuantity span {
+    font-size: 24px;
+    width: 40%;
+    background-color: bisque;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.billContainer {
+    padding: 30px;
+    width: 30%;
+}
+
+.cartBill {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    background-color: rgb(243, 241, 238);
+    border-radius: 15px;
+}
+
+.cartBill button {
+    font-size: 15px;
+    padding: 10px 15px;
+    background-color: lightblue;
+    border: none;
+    border-radius: 15px;
+    cursor: pointer;
+}

@@ -1,0 +1,38 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.categories {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+}
+
+.categories h1 {
+    font-size: 30px;
+}
+
+.buttonList {
+    display: flex;
+    gap: 10px;
+}
+
+.buttonList button {
+    font-size: 15px;
+    padding: 7px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.buttonList button:hover {
+    background-color: rgb(210, 197, 197);
+}
+
+.selectedBtn {
+    background-color: rgb(210, 197, 197);
+    border: 2px solid red;
+}
