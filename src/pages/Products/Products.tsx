@@ -12,9 +12,13 @@ const Products = () => {
 
   const filterCategory = (category: string) => {
     setFilteredProducts(products);
-    setFilteredProducts((prevProducts) =>
-      prevProducts.filter((product) => product.cateogory === category)
-    );
+    if (category === "all") {
+      setFilteredProducts(products);
+    } else {
+      setFilteredProducts((prevProducts) =>
+        prevProducts.filter((product) => product.cateogory === category)
+      );
+    }
     setSelected(category);
   };
 

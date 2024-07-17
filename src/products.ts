@@ -1,4 +1,5 @@
-import { nanoid } from "nanoid";
+import { v4 as uuidv4 } from "uuid";
+import chemise from "./images/chemise.webp";
 
 export type Product = {
   id: string;
@@ -12,7 +13,7 @@ export type Product = {
 
 export const products: Product[] = [
   {
-    id: nanoid(),
+    id: uuidv4(),
     title: "Product 1",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
@@ -22,7 +23,7 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: nanoid(),
+    id: uuidv4(),
     title: "Product 2",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
@@ -32,7 +33,7 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: nanoid(),
+    id: uuidv4(),
     title: "Product 3",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
@@ -42,7 +43,7 @@ export const products: Product[] = [
     inStock: false,
   },
   {
-    id: nanoid(),
+    id: uuidv4(),
     title: "Product 4",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
@@ -52,7 +53,7 @@ export const products: Product[] = [
     inStock: true,
   },
   {
-    id: nanoid(),
+    id: uuidv4(),
     title: "Product 5",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
@@ -62,13 +63,43 @@ export const products: Product[] = [
     inStock: false,
   },
   {
-    id: nanoid(),
+    id: uuidv4(),
     title: "Product 6",
     description:
       "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
     img: "https://static.vecteezy.com/system/resources/previews/018/924/261/original/3d-two-dumbbell-png.png",
     price: 10300,
     cateogory: "gym",
+    inStock: true,
+  },
+  {
+    id: uuidv4(),
+    title: "Product 7",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
+    img: "https://www.wilson.com/en-us/media/catalog/product/article_images/WTB7500ID_/WTB7500ID__b722ae318490e0f2e686864dc70fd730.png",
+    price: 2500,
+    cateogory: "sport",
+    inStock: true,
+  },
+  {
+    id: uuidv4(),
+    title: "Product 8",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
+    img: "https://duga.ma/4439-home_default/ordinateur-portable-asus-e410m-bv1182t-90nb0q11-m33020-nafida2.jpg",
+    price: 60000,
+    cateogory: "technology",
+    inStock: true,
+  },
+  {
+    id: uuidv4(),
+    title: "Product 9",
+    description:
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin et ante sed lorem commodo gravida. Fusce id cursus sapien. Nullam nec arcu sed velit convallis facilisis. Aenean non sem purus. Nullam tincidunt ligula vel libero consectetur, et tincidunt justo interdum. In hac habitasse platea dictumst.",
+    img: chemise,
+    price: 4200,
+    cateogory: "clothes",
     inStock: true,
   },
 ];

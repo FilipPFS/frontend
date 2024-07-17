@@ -1,22 +1,51 @@
-import { products } from "../../products";
+import { Product, products } from "../../products";
 import { useParams } from "react-router-dom";
+import styles from "./SingleProduct.module.css";
+import { useDispatch } from "react-redux";
+import { useCartDispatch } from "../../store/hooks";
+import cartSlice, { CartProduct } from "../../features/cartSlice";
 
 const SingleProduct = () => {
   const { id } = useParams();
 
+  const dispatch = useCartDispatch();
+
   const singleProduct = products.find((product) => product.id === id);
+
+  const handleAddToCart = (singleProduct: CartProduct) => {
+    dispatch(cartSlice.actions.addToCart(singleProduct));
+  };
 
   if (singleProduct) {
     return (
-      <main>
-        <div>
+      <main className={styles.main}>
+        <div className={styles.imgContainer}>
           <img src={singleProduct.img} />
         </div>
-        <div>
-          <p>{singleProduct.inStock ? "En stock" : "En rupture de stock"}</p>
+        <div className={styles.infos}>
+          <p className={styles.stock}>
+            {singleProduct.inStock ? "En stock" : "En rupture de stock"}
+          </p>
           <h1>{singleProduct.title}</h1>
-          <p>{(singleProduct.price / 100).toFixed(2)}€</p>
-          <p>{singleProduct.description}</p>
+          <p>Prix: {(singleProduct.price / 100).toFixed(2)}€</p>
+          <p className={styles.desc}>
+            Description: {singleProduct.description}
+          </p>
+          <button
+            className={styles.cartButton}
+            disabled={!singleProduct.inStock}
+            onClick={() =>
+              handleAddToCart({
+                id: singleProduct.id,
+                img: singleProduct.img,
+                title: singleProduct.title,
+                price: singleProduct.price,
+                quantity: 1,
+              })
+            }
+          >
+            Ajouter au panier
+          </button>
         </div>
       </main>
     );

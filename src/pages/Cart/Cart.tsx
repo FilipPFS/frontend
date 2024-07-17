@@ -24,7 +24,7 @@ const Cart = () => {
   return (
     <main className={styles.container}>
       <div className={styles.cartProducts}>
-        <h1>Your cart</h1>
+        <h1>Votre panier</h1>
         {cartItems.map((item) => {
           return (
             <article className={styles.product}>
@@ -49,7 +49,7 @@ const Cart = () => {
       <div className={styles.billContainer}>
         <div className={styles.cartBill}>
           <h1>Total: {formattedTotalPrice}€</h1>
-          <button>Passer la commande</button>
+          <button disabled={!total}>Passer la commande</button>
         </div>
       </div>
     </main>

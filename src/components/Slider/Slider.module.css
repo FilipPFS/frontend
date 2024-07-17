@@ -1,0 +1,66 @@
+.parentContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: white;
+}
+
+.container {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 150px;
+    background-color: rgb(28, 28, 43);
+    margin-top: 50px;
+    border-radius: 10px;
+}
+
+.textContainer {
+    width: 40%;
+    display: flex;
+    flex-direction: column;
+}
+
+.textContainer h1 {
+    font-size: 35px;
+    margin-bottom: 20px;
+}
+
+.description {
+    font-size: 12px;
+    width: 100%;
+}
+
+.oldPrice {
+    position: relative;
+    font-size: 18px;
+    width: fit-content;
+}
+
+.oldPrice:after {
+    content: "";
+    position: absolute;
+    border: 1px solid white;
+    width: 100%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.newPrice {
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.textContainer button {
+    margin-top: 20px;
+}
+
+.imgContainer {
+    width: 40%;
+}
+
+.imgContainer img {
+    width: 100%;
+}

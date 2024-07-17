@@ -8,6 +8,11 @@ type Buttons = Button[];
 
 export const buttons: Buttons = [
   {
+    categorie: "all",
+    jsx: "Tous",
+    isSelected: false,
+  },
+  {
     categorie: "clothes",
     jsx: "Vêtements",
     isSelected: false,

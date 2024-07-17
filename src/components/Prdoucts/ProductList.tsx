@@ -23,7 +23,7 @@ const ProductList = ({ products }: ProductListProps) => {
     <div className={styles.container}>
       {products.map((product) => {
         return (
-          <article className={styles.product}>
+          <article key={product.id} className={styles.product}>
             <div className={styles.productImg}>
               <Link to={`/product/${product.id}`}>
                 <img src={product.img} alt={product.title} />
@@ -47,7 +47,7 @@ const ProductList = ({ products }: ProductListProps) => {
                   })
                 }
               >
-                Ajoutez dans le panier
+                Ajouter au panier
               </button>
             </div>
           </article>

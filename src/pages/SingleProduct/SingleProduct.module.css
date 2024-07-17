@@ -1,0 +1,62 @@
+.main {
+    display: flex;
+    gap: 50px;
+    padding: 40px;
+}
+
+.imgContainer {
+    background-color: rgb(231, 240, 240);
+    padding: 50px;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.imgContainer img {
+    width: 100%;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.infos h1 {
+    font-size: 32px;
+}
+
+.infos p {
+    font-size: 16px;
+}
+
+.stock {
+    width: fit-content;
+    background-color: rgb(28, 28, 48);
+    padding: 6px 12px;
+    border-radius: 8px;
+    color: white;
+}
+
+.desc {
+    width: 80%;
+}
+
+.cartButton {
+    font-size: 16px;
+    background-color: rgb(28, 28, 48);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 8px;
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+}
+
+.cartButton:hover {
+    background-color: rgb(15, 15, 69);
+}
+
+.cartButton:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}

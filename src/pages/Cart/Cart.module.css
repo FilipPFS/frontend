@@ -77,3 +77,12 @@
     border-radius: 15px;
     cursor: pointer;
 }
+
+.cartBill button:hover {
+    background-color: rgb(175, 182, 188);
+}
+
+.cartBill button:disabled {
+    background-color: gray;
+    cursor: not-allowed;
+}
