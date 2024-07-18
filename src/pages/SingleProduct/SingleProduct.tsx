@@ -4,6 +4,7 @@ import styles from "./SingleProduct.module.css";
 import { useDispatch } from "react-redux";
 import { useCartDispatch } from "../../store/hooks";
 import cartSlice, { CartProduct } from "../../features/cartSlice";
+import { toast } from "react-toastify";
 
 const SingleProduct = () => {
   const { id } = useParams();
@@ -14,6 +15,9 @@ const SingleProduct = () => {
 
   const handleAddToCart = (singleProduct: CartProduct) => {
     dispatch(cartSlice.actions.addToCart(singleProduct));
+    toast.success("Ajouté dans le panier", {
+      autoClose: 1500,
+    });
   };
 
   if (singleProduct) {

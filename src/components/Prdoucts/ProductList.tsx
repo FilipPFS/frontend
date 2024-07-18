@@ -3,6 +3,7 @@ import styles from "./ProductList.module.css";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import cartSlice, { CartProduct } from "../../features/cartSlice";
 import { Link } from "react-router-dom";
+import { toast } from "react-toastify";
 
 type ProductListProps = {
   products: Product[];
@@ -17,6 +18,9 @@ const ProductList = ({ products }: ProductListProps) => {
 
   const handleAddToCart = (item: CartProduct) => {
     dispatch(cartSlice.actions.addToCart(item));
+    toast.success("Ajouté dans le panier", {
+      autoClose: 1500,
+    });
   };
 
   return (

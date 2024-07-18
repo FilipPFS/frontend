@@ -23,16 +23,17 @@
 }
 
 .textContainer h1 {
-    font-size: 35px;
+    font-size: 32px;
     margin-bottom: 20px;
 }
 
 .description {
-    font-size: 12px;
+    font-size: 11px;
     width: 100%;
 }
 
 .oldPrice {
+    margin-top: 10px;
     position: relative;
     font-size: 18px;
     width: fit-content;
@@ -54,7 +55,18 @@
 }
 
 .textContainer button {
+    background-color: rgb(2, 2, 24);
+    color: white;
+    border-radius: 6px;
+    font-weight: 800;
     margin-top: 20px;
+    padding: 4px 8px;
+    border: none;
+    cursor: pointer;
+}
+
+.textContainer a {
+    color: white;
 }
 
 .imgContainer {

@@ -1,5 +1,7 @@
 import React from "react";
 import AppRouter from "./pages/AppRouter";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 
@@ -8,6 +10,7 @@ function App() {
     <Provider store={store}>
       <div className="App">
         <AppRouter />
+        <ToastContainer />
       </div>
     </Provider>
   );

@@ -1,0 +1,96 @@
+.main {
+    display: flex;
+    flex-direction: column;
+}
+
+.head {
+    align-self: center;
+    display: flex;
+    justify-content: center;
+    width: 90%;
+    background: linear-gradient(135deg, #0f131e, #082254);
+    padding: 30px;
+    border-radius: 10px;
+    color: white;
+    margin-top: 40px;
+}
+
+.productContent {
+    display: flex;
+    gap: 50px;
+    padding: 40px;
+    margin-top: 30px;
+}
+
+.imgContainer {
+    position: relative;
+    background-color: rgb(231, 240, 240);
+    padding: 50px;
+    width: 70%;
+    border-radius: 10px;
+}
+
+.promo {
+    position: absolute;
+    top: 16px;
+    left: 16px;
+    width: fit-content;
+    background: linear-gradient(135deg, #0f131e, #082254);
+    color: white;
+    padding: 4px 24px;
+    font-size: 18px;
+    border-radius: 5px;
+    font-weight: 700;
+}
+
+.imgContainer img {
+    width: 100%;
+}
+
+.infos {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.infos h1 {
+    font-size: 32px;
+}
+
+.infos p {
+    font-size: 16px;
+}
+
+.stock {
+    width: fit-content;
+    background-color: rgb(28, 28, 48);
+    padding: 2px 20px;
+    border-radius: 8px;
+    color: white;
+    font-weight: 800;
+}
+
+.newPrice {
+    margin-left: 10px;
+    font-size: 22px;
+    font-weight: 700;
+}
+
+.desc {
+    width: 80%;
+}
+
+.cartButton {
+    font-size: 16px;
+    background-color: rgb(28, 28, 48);
+    color: white;
+    padding: 6px 20px;
+    border-radius: 8px;
+    width: fit-content;
+    border: none;
+    cursor: pointer;
+}
+
+.cartButton:hover {
+    background-color: rgb(15, 15, 69);
+}

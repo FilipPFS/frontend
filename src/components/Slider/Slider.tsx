@@ -8,6 +8,8 @@ type SliderProps = {
 };
 
 const Slider = ({ product }: SliderProps) => {
+  const substractedPrice = product.oldPrice - product.newPrice;
+
   return (
     <div className={styles.parentContainer}>
       <div className={styles.container}>
@@ -20,7 +22,7 @@ const Slider = ({ product }: SliderProps) => {
           </p>
           <p className={styles.newPrice}>
             {(product.newPrice / 100).toFixed(2)}€ ( -
-            {((product.newPrice / product.oldPrice) * 100).toFixed(0)}%)
+            {((substractedPrice / product.oldPrice) * 100).toFixed(0)}%)
           </p>
           <button>
             <Link to={`/top-product/${product.id}`}>Achetez maintenant</Link>
