@@ -7,6 +7,9 @@ const slideSlice = createSlice({
     increment(state, action: PayloadAction) {
       state.currentIndex++;
     },
+    decrement(state, action: PayloadAction) {
+      state.currentIndex--;
+    },
     setIndex(state, action: PayloadAction<number>) {
       state.currentIndex = action.payload;
     },

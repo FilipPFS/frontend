@@ -6,6 +6,7 @@
 }
 
 .container {
+    position: relative;
     width: 90%;
     display: flex;
     justify-content: space-between;
@@ -14,6 +15,54 @@
     background-color: rgb(28, 28, 43);
     margin-top: 50px;
     border-radius: 10px;
+}
+
+.buttonLeftIcon {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 20px;
+    transform: translateY(-50%);
+    background-color: transparent;
+    padding: 4px;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.buttonRightIcon {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 4px;
+    background-color: transparent;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.buttonLeftIcon:hover,
+.buttonRightIcon:hover {
+    background-color: rgba(128, 128, 128, 0.5);
+}
+
+.buttonLeftIcon:active,
+.buttonRightIcon:active {
+    background-color: rgba(128, 128, 128, 0.7);
+}
+
+.leftIcon {
+    font-size: 40px;
+    color: white
+}
+
+.rightIcon {
+    font-size: 40px;
+    color: white;
 }
 
 .textContainer {
@@ -54,19 +103,23 @@
     font-weight: 700;
 }
 
+.btnBuy {
+    margin-top: 10px;
+    width: fit-content;
+}
+
 .textContainer button {
     background-color: rgb(2, 2, 24);
     color: white;
     border-radius: 6px;
     font-weight: 800;
-    margin-top: 20px;
-    padding: 4px 8px;
+    padding: 4px 36px;
     border: none;
     cursor: pointer;
 }
 
-.textContainer a {
-    color: white;
+.textContainer button:hover* {
+    background-color: rgb(39, 10, 65);
 }
 
 .imgContainer {
