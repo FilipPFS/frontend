@@ -28,3 +28,26 @@
     margin-top: 20px;
     font-size: 13px;
 }
+
+@media (max-width: 750px) {
+
+    .parentContainer {
+        text-align: center;
+    }
+
+    .parentContainer h1 {
+        padding: 0 40px;
+    }
+
+    .container {
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: center;
+        gap: 30px;
+        padding: 20px 40px;
+    }
+
+    .section {
+        width: 100%;
+    }
+}

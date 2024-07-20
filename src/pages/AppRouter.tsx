@@ -8,6 +8,7 @@ import TopProduct from "./TopProduct/TopProduct";
 import SingUp from "./SingUp/SingUp";
 import Register from "./Register/Register";
 import Footer from "../components/Footer/Footer";
+import Dashboard from "./Dashboard/Dashboard";
 
 const AppRouter = () => {
   return (
@@ -21,6 +22,7 @@ const AppRouter = () => {
         <Route path="/top-product/:id" element={<TopProduct />} />
         <Route path="/sign-up" element={<SingUp />} />
         <Route path="/register" element={<Register />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
       <Footer />
     </Router>

@@ -144,3 +144,43 @@
         width: 50%;
     }
 }
+
+@media (max-width: 750px) {
+
+    .container {
+        flex-direction: column;
+        padding: 20px 0;
+        gap: 30px;
+        text-align: center;
+    }
+
+    .imgContainer {
+        width: 50%;
+    }
+
+    .textContainer {
+        width: 60%;
+    }
+
+    .textContainer h1 {
+        align-self: center;
+        font-size: 27px;
+    }
+
+    .leftIcon,
+    .rightIcon {
+        font-size: 25px;
+    }
+
+    .newPrice {
+        font-size: 18px;
+    }
+
+    .oldPrice {
+        align-self: center;
+    }
+
+    .description {
+        font-size: 10px;
+    }
+}

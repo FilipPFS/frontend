@@ -4,10 +4,15 @@
     align-items: center;
     padding: 20px 80px;
     background-color: rgb(22, 22, 44);
+    position: relative;
 }
 
 .header h1 {
     color: white;
+}
+
+.mobClick {
+    display: none;
 }
 
 .navigation {
@@ -32,10 +37,69 @@
     gap: 10px;
 }
 
+.cartItem {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
 .cartIcon {
     font-size: 32px;
 }
 
 .cartBlock span {
     font-size: 20px;
+}
+
+.shieldIcon {
+    margin-left: 10px;
+    font-size: 29px;
+}
+
+@media (max-width: 750px) {
+
+    .navigation {
+        display: none;
+    }
+
+    .mobClick {
+        display: block;
+    }
+
+    .mobIcon {
+        font-size: 28px;
+        color: white;
+        cursor: pointer;
+    }
+
+    .mobNavigation {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+        padding: 20px 40px;
+        color: white;
+        background-color: rgb(22, 22, 44);
+        position: absolute;
+        left: 0;
+        width: 100%;
+        border-bottom-left-radius: 20px;
+        border-bottom-right-radius: 20px;
+        z-index: 1;
+    }
+
+    .mobNavigation a {
+        color: white;
+    }
+
+    .cartBlock {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+}
+
+@media (max-width: 500px) {
+    .header {
+        padding: 20px 40px;
+    }
 }

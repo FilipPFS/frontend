@@ -24,6 +24,8 @@
 
 .imgContainer {
     position: relative;
+    display: flex;
+    flex-direction: column;
     background-color: rgb(231, 240, 240);
     padding: 50px;
     width: 70%;
@@ -93,4 +95,30 @@
 
 .cartButton:hover {
     background-color: rgb(15, 15, 69);
+}
+
+@media (max-width: 1024px) {
+
+    .head h1 {
+        font-size: 26px;
+        text-align: center;
+    }
+
+    .productContent {
+        flex-direction: column;
+    }
+
+    .imgContainer {
+        width: 100%;
+        align-items: center;
+    }
+
+    .imgContainer img {
+        width: 40%;
+    }
+
+    .desc {
+        width: 100%;
+    }
+
 }
