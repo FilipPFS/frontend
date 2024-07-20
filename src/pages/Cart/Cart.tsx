@@ -25,6 +25,9 @@ const Cart = () => {
     <main className={styles.container}>
       <div className={styles.cartProducts}>
         <h1>Votre panier</h1>
+        {cartItems.length === 0 && (
+          <p>Vous n'avez pas d'article dans le panier.</p>
+        )}
         {cartItems.map((item) => {
           return (
             <article className={styles.product}>

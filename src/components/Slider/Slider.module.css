@@ -129,3 +129,18 @@
 .imgContainer img {
     width: 100%;
 }
+
+@media (max-width: 1024px) {
+
+    .container {
+        padding: 20px 80px;
+    }
+
+    .imgContainer {
+        width: 40%;
+    }
+
+    .textContainer {
+        width: 50%;
+    }
+}

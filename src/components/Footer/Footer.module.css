@@ -1,0 +1,54 @@
+.footer {
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(32, 17, 46);
+    color: white;
+    margin-top: 120px;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 40px;
+}
+
+.topLinks {
+    display: flex;
+    gap: 100px;
+}
+
+.topLinksBlock {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.topIcons {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.icon {
+    font-size: 25px;
+}
+
+.bottom {
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+}
+
+@media (max-width: 1024px) {
+
+    .top {
+        padding: 0 20px;
+    }
+
+    .topLinks {
+        gap: 50px;
+    }
+}

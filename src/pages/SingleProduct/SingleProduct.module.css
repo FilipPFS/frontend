@@ -5,6 +5,8 @@
 }
 
 .imgContainer {
+    display: flex;
+    flex-direction: column;
     background-color: rgb(231, 240, 240);
     padding: 50px;
     width: 70%;
@@ -59,4 +61,25 @@
 .cartButton:disabled {
     background-color: gray;
     cursor: not-allowed;
+}
+
+@media (max-width: 1024px) {
+
+    .main {
+        flex-direction: column;
+    }
+
+    .imgContainer {
+        width: 100%;
+        align-items: center;
+    }
+
+    .imgContainer img {
+        width: 40%;
+    }
+
+    .desc {
+        width: 100%;
+    }
+
 }

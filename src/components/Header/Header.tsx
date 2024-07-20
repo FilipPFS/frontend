@@ -22,7 +22,7 @@ const Header = () => {
             Mon Compte
           </Link>
         ) : (
-          <Link to={"signIn"} className={styles.account}>
+          <Link to={"sign-up"} className={styles.account}>
             Connexion
           </Link>
         )}
