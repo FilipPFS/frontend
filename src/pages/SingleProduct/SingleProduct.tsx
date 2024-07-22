@@ -1,30 +1,45 @@
-import { Product, products } from "../../products";
+import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
+import axios from "axios";
+import { toast } from "react-toastify";
 import styles from "./SingleProduct.module.css";
-import { useDispatch } from "react-redux";
 import { useCartDispatch } from "../../store/hooks";
 import cartSlice, { CartProduct } from "../../features/cartSlice";
-import { toast } from "react-toastify";
+import { Product } from "../../products";
 
 const SingleProduct = () => {
-  const { id } = useParams();
+  const [myProducts, setMyProducts] = useState<Product[]>([]);
 
+  const { id } = useParams<{ id: string }>();
   const dispatch = useCartDispatch();
 
-  const singleProduct = products.find((product) => product.id === id);
+  const getProducts = async () => {
+    try {
+      const response = await axios.get<Product[]>(
+        "http://localhost:5000/api/product"
+      );
+      setMyProducts(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
+  const singleProduct = myProducts.find((product) => product._id === id);
 
   const handleAddToCart = (singleProduct: CartProduct) => {
     dispatch(cartSlice.actions.addToCart(singleProduct));
-    toast.success("Ajouté dans le panier", {
-      autoClose: 1500,
-    });
+    toast.success("Ajouté dans le panier", { autoClose: 1500 });
   };
 
   if (singleProduct) {
     return (
       <main className={styles.main}>
         <div className={styles.imgContainer}>
-          <img src={singleProduct.img} />
+          <img src={singleProduct.img} alt={singleProduct.title} />
         </div>
         <div className={styles.infos}>
           <p className={styles.stock}>
@@ -40,7 +55,7 @@ const SingleProduct = () => {
             disabled={!singleProduct.inStock}
             onClick={() =>
               handleAddToCart({
-                id: singleProduct.id,
+                id: singleProduct._id,
                 img: singleProduct.img,
                 title: singleProduct.title,
                 price: singleProduct.price,

@@ -25,15 +25,17 @@ const ProductList = ({ products }: ProductListProps) => {
     });
   };
 
+  console.log(cart);
+
   return (
     <div className={styles.parentContainer}>
       <h1>Nos produits</h1>
       <div className={styles.container}>
         {products.map((product) => {
           return (
-            <article key={product.id} className={styles.product}>
+            <article key={product._id} className={styles.product}>
               <div className={styles.productImg}>
-                <Link to={`/product/${product.id}`}>
+                <Link to={`/product/${product._id}`}>
                   <img src={product.img} alt={product.title} />
                 </Link>
                 <p className={styles.infoStock}>
@@ -47,7 +49,7 @@ const ProductList = ({ products }: ProductListProps) => {
                   disabled={!product.inStock}
                   onClick={() =>
                     handleAddToCart({
-                      id: product.id,
+                      id: product._id,
                       img: product.img,
                       title: product.title,
                       price: product.price,

@@ -1,22 +1,37 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ProductList from "../../components/Prdoucts/ProductList";
-import { products } from "../../products";
+import { Product } from "../../products";
 import { buttons } from "./buttons";
 import styles from "./Products.module.css";
-import { CANCELLED } from "dns";
-import { log } from "console";
+import axios from "axios";
 
 const Products = () => {
-  const [filteredProducts, setFilteredProducts] = useState(products);
+  const [products, setMyProducts] = useState<Product[]>([]);
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
   const [selected, setSelected] = useState("");
 
+  const getProducts = async () => {
+    try {
+      const response = await axios.get<Product[]>(
+        "http://localhost:5000/api/product"
+      );
+      setMyProducts(response.data);
+      setFilteredProducts(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getProducts();
+  }, []);
+
   const filterCategory = (category: string) => {
-    setFilteredProducts(products);
     if (category === "all") {
       setFilteredProducts(products);
     } else {
-      setFilteredProducts((prevProducts) =>
-        prevProducts.filter((product) => product.cateogory === category)
+      setFilteredProducts(
+        products.filter((product) => product.category === category)
       );
     }
     setSelected(category);
@@ -27,19 +42,17 @@ const Products = () => {
       <div className={styles.categories}>
         <h1>Selectionner une catégorie</h1>
         <ul className={styles.buttonList}>
-          {buttons.map((button, index) => {
-            return (
-              <button
-                key={index}
-                className={
-                  selected === button.categorie ? styles.selectedBtn : ""
-                }
-                onClick={() => filterCategory(button.categorie)}
-              >
-                {button.jsx}
-              </button>
-            );
-          })}
+          {buttons.map((button, index) => (
+            <button
+              key={index}
+              className={
+                selected === button.categorie ? styles.selectedBtn : ""
+              }
+              onClick={() => filterCategory(button.categorie)}
+            >
+              {button.jsx}
+            </button>
+          ))}
         </ul>
       </div>
       <ProductList products={filteredProducts} />
