@@ -58,3 +58,9 @@
         width: 50%;
     }
 }
+
+@media (max-width: 750px) {
+    .form {
+        width: 80%;
+    }
+}

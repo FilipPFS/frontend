@@ -6,7 +6,7 @@ import { useState } from "react";
 
 const Header = () => {
   const connected = false;
-  const admin = true;
+  const admin = false;
 
   const [open, setOpen] = useState(false);
 
@@ -52,21 +52,27 @@ const Header = () => {
         <FaBars className={styles.mobIcon} onClick={handleMobileNavigation} />
         {open && (
           <nav className={styles.mobNavigation}>
-            <Link to={"/products"}>Produits</Link>
+            <Link to={"/products"} onClick={() => setOpen(false)}>
+              Produits
+            </Link>
             {connected ? (
-              <Link to={"account"}>Mon Compte</Link>
+              <Link to={"account"} onClick={() => setOpen(false)}>
+                Mon Compte
+              </Link>
             ) : (
-              <Link to={"sign-up"}>Connexion</Link>
+              <Link to={"sign-up"} onClick={() => setOpen(false)}>
+                Connexion
+              </Link>
             )}
             <div className={styles.cartBlock}>
               <div className={styles.cartItem}>
-                <Link to={"/cart"}>
+                <Link to={"/cart"} onClick={() => setOpen(false)}>
                   <FaShoppingCart className={styles.cartIcon} />
                 </Link>
                 <span>{cartSum}</span>
               </div>
               {admin && (
-                <Link to={"/dashboard"}>
+                <Link to={"/dashboard"} onClick={() => setOpen(false)}>
                   <FaShieldAlt className={styles.shieldIcon} />
                 </Link>
               )}

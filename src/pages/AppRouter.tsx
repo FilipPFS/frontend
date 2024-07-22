@@ -9,6 +9,7 @@ import SingUp from "./SingUp/SingUp";
 import Register from "./Register/Register";
 import Footer from "../components/Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
+import Account from "./Account/Account";
 
 const AppRouter = () => {
   return (
@@ -23,6 +24,7 @@ const AppRouter = () => {
         <Route path="/sign-up" element={<SingUp />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
     </Router>

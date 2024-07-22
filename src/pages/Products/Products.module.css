@@ -18,6 +18,8 @@
 .buttonList {
     display: flex;
     gap: 10px;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 .buttonList button {
@@ -35,4 +37,11 @@
 .selectedBtn {
     background-color: rgb(210, 197, 197);
     border: 2px solid red;
+}
+
+@media (max-width: 750px) {
+    .categories h1 {
+        font-size: 24px;
+        text-align: center;
+    }
 }

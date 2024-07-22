@@ -122,3 +122,18 @@
     }
 
 }
+
+@media (max-width: 750px) {
+
+    .imgContainer {
+        padding: 30px;
+    }
+
+    .imgContainer img {
+        width: 80%;
+    }
+
+    .head h1 {
+        font-size: 20px;
+    }
+}

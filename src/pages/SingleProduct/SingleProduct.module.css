@@ -81,5 +81,15 @@
     .desc {
         width: 100%;
     }
+}
 
+@media (max-width: 750px) {
+
+    .imgContainer {
+        padding: 30px;
+    }
+
+    .imgContainer img {
+        width: 80%;
+    }
 }
