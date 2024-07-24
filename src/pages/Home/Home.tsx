@@ -3,30 +3,19 @@ import ProductList from "../../components/Prdoucts/ProductList";
 import { Product } from "../../products";
 import Slider from "../../components/Slider/Slider";
 import Engagements from "../../components/Engagements/Engagements";
-import axios from "axios";
+import { useCartDispatch, useCartSelector } from "../../store/hooks";
+import { fetchProducts } from "../../features/productSlice";
+import { RootState } from "../../store/store";
 
 const Home = () => {
-  const [myProducts, setmyProducts] = useState<Product[]>([]);
-
-  const getProducts = async () => {
-    try {
-      const response = await axios.get<Product[]>(
-        "http://localhost:5000/api/product"
-      );
-      setmyProducts(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
+  const products = useCartSelector(
+    (state: RootState) => state.products.products
+  );
 
   return (
     <main>
       <Slider />
-      <ProductList products={myProducts} />
+      <ProductList products={products} />
       <Engagements />
     </main>
   );

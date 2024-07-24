@@ -10,17 +10,12 @@ type ProductListProps = {
 };
 
 const ProductList = ({ products }: ProductListProps) => {
-  function getToastPosition() {
-    const isMobile = window.innerWidth <= 768;
-    return isMobile ? "bottom-center" : "top-right";
-  }
   const cart = useCartSelector((state) => state.cart.items);
   const dispatch = useCartDispatch();
 
   const handleAddToCart = (item: CartProduct) => {
     dispatch(cartSlice.actions.addToCart(item));
     toast.success("Ajouté dans le panier", {
-      position: getToastPosition(),
       autoClose: 1500,
     });
   };

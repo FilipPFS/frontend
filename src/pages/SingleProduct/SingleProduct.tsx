@@ -3,30 +3,18 @@ import { useParams } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import styles from "./SingleProduct.module.css";
-import { useCartDispatch } from "../../store/hooks";
+import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import cartSlice, { CartProduct } from "../../features/cartSlice";
 import { Product } from "../../products";
+import { RootState } from "../../store/store";
 
 const SingleProduct = () => {
-  const [myProducts, setMyProducts] = useState<Product[]>([]);
+  const myProducts = useCartSelector(
+    (state: RootState) => state.products.products
+  );
 
   const { id } = useParams<{ id: string }>();
   const dispatch = useCartDispatch();
-
-  const getProducts = async () => {
-    try {
-      const response = await axios.get<Product[]>(
-        "http://localhost:5000/api/product"
-      );
-      setMyProducts(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   const singleProduct = myProducts.find((product) => product._id === id);
 

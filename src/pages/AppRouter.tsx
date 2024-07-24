@@ -10,8 +10,28 @@ import Register from "./Register/Register";
 import Footer from "../components/Footer/Footer";
 import Dashboard from "./Dashboard/Dashboard";
 import Account from "./Account/Account";
+import { useCartDispatch, useCartSelector } from "../store/hooks";
+import { RootState } from "../store/store";
+import { useEffect } from "react";
+import { fetchProducts } from "../features/productSlice";
 
 const AppRouter = () => {
+  const dispatch = useCartDispatch();
+  const status = useCartSelector((state: RootState) => state.products.status);
+  const error = useCartSelector((state: RootState) => state.products.error);
+
+  useEffect(() => {
+    if (status === "idle") {
+      dispatch(fetchProducts());
+    }
+  }, [status, dispatch]);
+
+  if (status === "loading") {
+    return <h1>Loading...</h1>;
+  } else if (status === "failed") {
+    return <div>Error: {error}</div>;
+  }
+
   return (
     <Router>
       <Header />

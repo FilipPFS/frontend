@@ -4,27 +4,15 @@ import { Product } from "../../products";
 import { buttons } from "./buttons";
 import styles from "./Products.module.css";
 import axios from "axios";
+import { useCartSelector } from "../../store/hooks";
+import { RootState } from "../../store/store";
 
 const Products = () => {
-  const [products, setMyProducts] = useState<Product[]>([]);
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([]);
+  const products = useCartSelector(
+    (state: RootState) => state.products.products
+  );
+  const [filteredProducts, setFilteredProducts] = useState<Product[]>(products);
   const [selected, setSelected] = useState("");
-
-  const getProducts = async () => {
-    try {
-      const response = await axios.get<Product[]>(
-        "http://localhost:5000/api/product"
-      );
-      setMyProducts(response.data);
-      setFilteredProducts(response.data);
-    } catch (err) {
-      console.error(err);
-    }
-  };
-
-  useEffect(() => {
-    getProducts();
-  }, []);
 
   const filterCategory = (category: string) => {
     if (category === "all") {

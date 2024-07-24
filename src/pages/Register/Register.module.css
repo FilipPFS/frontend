@@ -49,6 +49,10 @@
     text-align: center;
 }
 
+.errorMsg {
+    color: red;
+}
+
 @media (max-width: 1024px) {
     .container {
         justify-content: center;

@@ -3,10 +3,17 @@ import { Link } from "react-router-dom";
 import styles from "./Header.module.css";
 import { useCartSelector } from "../../store/hooks";
 import { useState } from "react";
+import { log } from "console";
 
 const Header = () => {
-  const connected = false;
-  const admin = false;
+  const token = localStorage.getItem("token");
+  let connected = false;
+  const adminString = localStorage.getItem("admin");
+  const admin = adminString === "true";
+
+  if (token) {
+    connected = true;
+  }
 
   const [open, setOpen] = useState(false);
 
