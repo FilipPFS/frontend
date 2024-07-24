@@ -14,6 +14,8 @@ import { useCartDispatch, useCartSelector } from "../store/hooks";
 import { RootState } from "../store/store";
 import { useEffect } from "react";
 import { fetchProducts } from "../features/productSlice";
+import { fetchCartItems } from "../features/cartSlice";
+import { fetchTopProducts } from "../features/topProductSlice";
 
 const AppRouter = () => {
   const dispatch = useCartDispatch();
@@ -23,6 +25,8 @@ const AppRouter = () => {
   useEffect(() => {
     if (status === "idle") {
       dispatch(fetchProducts());
+      dispatch(fetchCartItems());
+      dispatch(fetchTopProducts());
     }
   }, [status, dispatch]);
 

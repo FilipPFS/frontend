@@ -7,6 +7,7 @@ const Account = () => {
   const signOut = () => {
     localStorage.removeItem("token");
     localStorage.removeItem("admin");
+    localStorage.removeItem("userId");
     navigate("/");
     window.location.reload();
   };

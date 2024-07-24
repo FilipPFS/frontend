@@ -1,13 +1,17 @@
 import { Link, useNavigate } from "react-router-dom";
 import styles from "./Register.module.css";
 import { useState } from "react";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 
 type DataForm = {
   lastName: string;
   firstName: string;
   email: string;
   password: string;
+};
+
+type ServerResponse = {
+  message: string;
 };
 
 const Register = () => {
@@ -35,7 +39,7 @@ const Register = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
+      const response: AxiosResponse<ServerResponse> = await axios.post(
         "http://localhost:5000/api/auth/signup",
         formData
       );

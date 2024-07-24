@@ -1,14 +1,15 @@
 import { useParams } from "react-router-dom";
 import styles from "./TopProduct.module.css";
-import { topProducts } from "../../topProducts";
-import { useCartDispatch } from "../../store/hooks";
+import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import cartSlice, { CartProduct } from "../../features/cartSlice";
 import { toast } from "react-toastify";
 
 const TopProduct = () => {
   const { id } = useParams();
 
-  const product = topProducts.find((topProduct) => topProduct.id === id);
+  const topProducts = useCartSelector((state) => state.topProduct.topProducts);
+
+  const product = topProducts.find((topProduct) => topProduct._id === id);
 
   const dispatch = useCartDispatch();
 
@@ -49,7 +50,7 @@ const TopProduct = () => {
               className={styles.cartButton}
               onClick={() =>
                 handleAddToCart({
-                  id: product.id,
+                  id: product._id,
                   img: product.img,
                   title: product.title,
                   price: product.newPrice,

@@ -1,11 +1,15 @@
-import cartSlice, { CartProduct } from "../../features/cartSlice";
+import { useEffect } from "react";
+import cartSlice, {
+  CartProduct,
+  fetchCartItems,
+} from "../../features/cartSlice";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
+import { RootState } from "../../store/store";
 import styles from "./Cart.module.css";
 
 const Cart = () => {
-  const cartItems = useCartSelector((state) => state.cart.items);
-
   const dispatch = useCartDispatch();
+  const cartItems = useCartSelector((state: RootState) => state.cart.items);
 
   const handleAddToCart = (item: CartProduct) => {
     dispatch(cartSlice.actions.addToCart(item));
@@ -21,6 +25,8 @@ const Cart = () => {
   );
   const formattedTotalPrice = (total / 100).toFixed(2);
 
+  console.log(cartItems);
+
   return (
     <main className={styles.container}>
       <div className={styles.cartProducts}>
@@ -30,7 +36,7 @@ const Cart = () => {
         )}
         {cartItems.map((item) => {
           return (
-            <article className={styles.product}>
+            <article key={item.id} className={styles.product}>
               <div className={styles.imgContainer}>
                 <img src={item.img} alt={item.title} />
               </div>

@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import { topProduct, topProducts } from "../../topProducts";
 import { Link } from "react-router-dom";
 import styles from "./Slider.module.css";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
@@ -8,7 +7,10 @@ import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
 
 const Slider = () => {
   const index = useCartSelector((state) => state.slider.currentIndex);
+  const topProducts = useCartSelector((state) => state.topProduct.topProducts);
   const dispatch = useCartDispatch();
+
+  console.log(topProducts);
 
   useEffect(() => {
     const timeoutId = setTimeout(() => {
@@ -40,6 +42,10 @@ const Slider = () => {
 
   const product = topProducts[index];
 
+  if (!product) {
+    return null;
+  }
+
   const substractedPrice = product.oldPrice - product.newPrice;
 
   return (
@@ -59,7 +65,7 @@ const Slider = () => {
             {(product.newPrice / 100).toFixed(2)}€ ( -
             {((substractedPrice / product.oldPrice) * 100).toFixed(0)}%)
           </p>
-          <Link to={`/top-product/${product.id}`} className={styles.btnBuy}>
+          <Link to={`/top-product/${product._id}`} className={styles.btnBuy}>
             <button>Achetez maintenant</button>
           </Link>
         </section>

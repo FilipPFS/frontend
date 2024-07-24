@@ -8,6 +8,12 @@ type SingUpForm = {
   password: string;
 };
 
+type ServerResponse = {
+  userId: string;
+  isAdmin: boolean;
+  token: string;
+};
+
 const SingUp = () => {
   const [signUpData, setSignUpData] = useState<SingUpForm>({
     email: "",
@@ -31,7 +37,7 @@ const SingUp = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post(
+      const response: AxiosResponse<ServerResponse> = await axios.post(
         "http://localhost:5000/api/auth/login",
         signUpData
       );
