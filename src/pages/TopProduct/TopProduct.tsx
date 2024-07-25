@@ -3,8 +3,12 @@ import styles from "./TopProduct.module.css";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import cartSlice, { CartProduct } from "../../features/cartSlice";
 import { toast } from "react-toastify";
+import { useEffect } from "react";
 
 const TopProduct = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const { id } = useParams();
 
   const topProducts = useCartSelector((state) => state.topProduct.topProducts);
@@ -50,7 +54,7 @@ const TopProduct = () => {
               className={styles.cartButton}
               onClick={() =>
                 handleAddToCart({
-                  id: product._id,
+                  productId: product._id,
                   img: product.img,
                   title: product.title,
                   price: product.newPrice,

@@ -44,7 +44,7 @@ const ProductList = ({ products }: ProductListProps) => {
                   disabled={!product.inStock}
                   onClick={() =>
                     handleAddToCart({
-                      id: product._id,
+                      productId: product._id,
                       img: product.img,
                       title: product.title,
                       price: product.price,

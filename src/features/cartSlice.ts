@@ -2,7 +2,7 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
 
 export type CartProduct = {
-  id: string;
+  productId: string;
   img: string;
   title: string;
   price: number;
@@ -40,7 +40,7 @@ const cartSlice = createSlice({
     addToCart(
       state,
       action: PayloadAction<{
-        id: string;
+        productId: string;
         img: string;
         title: string;
         price: number;
@@ -48,7 +48,7 @@ const cartSlice = createSlice({
       }>
     ) {
       const existingItem = state.items.find(
-        (item) => item.id === action.payload.id
+        (item) => item.productId === action.payload.productId
       );
       if (existingItem) {
         existingItem.quantity++;
@@ -61,7 +61,7 @@ const cartSlice = createSlice({
     },
     removeFromCart(state, action: PayloadAction<string>) {
       const existingItem = state.items.find(
-        (item) => item.id === action.payload
+        (item) => item.productId === action.payload
       );
 
       if (existingItem) {
@@ -69,7 +69,7 @@ const cartSlice = createSlice({
           existingItem.quantity--;
         } else {
           state.items = state.items.filter(
-            (item) => item.id !== action.payload
+            (item) => item.productId !== action.payload
           );
         }
       }

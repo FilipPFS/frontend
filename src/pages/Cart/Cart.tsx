@@ -36,7 +36,7 @@ const Cart = () => {
         )}
         {cartItems.map((item) => {
           return (
-            <article key={item.id} className={styles.product}>
+            <article key={item.productId} className={styles.product}>
               <div className={styles.imgContainer}>
                 <img src={item.img} alt={item.title} />
               </div>
@@ -48,7 +48,9 @@ const Cart = () => {
                 <div className={styles.adjustQuantity}>
                   <span onClick={() => handleAddToCart(item)}>+</span>
                   <span>{item.quantity}</span>
-                  <span onClick={() => handleRemoveFromCart(item.id)}>-</span>
+                  <span onClick={() => handleRemoveFromCart(item.productId)}>
+                    -
+                  </span>
                 </div>
               </div>
             </article>

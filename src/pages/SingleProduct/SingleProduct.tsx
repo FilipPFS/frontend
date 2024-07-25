@@ -9,6 +9,10 @@ import { Product } from "../../products";
 import { RootState } from "../../store/store";
 
 const SingleProduct = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   const myProducts = useCartSelector(
     (state: RootState) => state.products.products
   );
@@ -43,7 +47,7 @@ const SingleProduct = () => {
             disabled={!singleProduct.inStock}
             onClick={() =>
               handleAddToCart({
-                id: singleProduct._id,
+                productId: singleProduct._id,
                 img: singleProduct.img,
                 title: singleProduct.title,
                 price: singleProduct.price,
