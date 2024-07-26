@@ -4,7 +4,7 @@ import axios from "axios";
 import { toast } from "react-toastify";
 import styles from "./SingleProduct.module.css";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
-import cartSlice, { CartProduct } from "../../features/cartSlice";
+import cartSlice, { addCartItem, CartProduct } from "../../features/cartSlice";
 import { Product } from "../../products";
 import { RootState } from "../../store/store";
 
@@ -23,7 +23,7 @@ const SingleProduct = () => {
   const singleProduct = myProducts.find((product) => product._id === id);
 
   const handleAddToCart = (singleProduct: CartProduct) => {
-    dispatch(cartSlice.actions.addToCart(singleProduct));
+    dispatch(addCartItem(singleProduct));
     toast.success("Ajouté dans le panier", { autoClose: 1500 });
   };
 

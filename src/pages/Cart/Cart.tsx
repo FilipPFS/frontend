@@ -6,8 +6,10 @@ import cartSlice, {
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import styles from "./Cart.module.css";
+import axios from "axios";
 
 const Cart = () => {
+  const userId = localStorage.getItem("userId");
   const dispatch = useCartDispatch();
   const cartItems = useCartSelector((state: RootState) => state.cart.items);
 
@@ -15,8 +17,39 @@ const Cart = () => {
     dispatch(cartSlice.actions.addToCart(item));
   };
 
-  const handleRemoveFromCart = (id: string) => {
-    dispatch(cartSlice.actions.removeFromCart(id));
+  const handleAddToUserCart = async (id: string) => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/api/cart/${userId}/${id}`
+      );
+      const newQuantity = response.data.product.quantity;
+      dispatch(
+        cartSlice.actions.updateProductQuantity({
+          productId: id,
+          quantity: newQuantity,
+        })
+      );
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  const handleRemoveFromCart = async (productId: string) => {
+    if (!userId) {
+      dispatch(cartSlice.actions.removeFromCart(productId));
+    } else {
+      try {
+        const response = await axios.post(
+          `http://localhost:5000/api/cart/remove-item/${userId}/${productId}`
+        );
+
+        const updatedItems = response.data.items;
+
+        dispatch(cartSlice.actions.setItems(updatedItems));
+      } catch (err) {
+        console.error("Failed to remove item from cart:", err);
+      }
+    }
   };
 
   const total = cartItems.reduce(
@@ -46,7 +79,15 @@ const Cart = () => {
                   <p>{(item.price / 100).toFixed(2)}€</p>
                 </div>
                 <div className={styles.adjustQuantity}>
-                  <span onClick={() => handleAddToCart(item)}>+</span>
+                  <span
+                    onClick={
+                      !userId
+                        ? () => handleAddToCart(item)
+                        : () => handleAddToUserCart(item.productId)
+                    }
+                  >
+                    +
+                  </span>
                   <span>{item.quantity}</span>
                   <span onClick={() => handleRemoveFromCart(item.productId)}>
                     -

@@ -1,7 +1,7 @@
 import { useParams } from "react-router-dom";
 import styles from "./TopProduct.module.css";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
-import cartSlice, { CartProduct } from "../../features/cartSlice";
+import cartSlice, { addCartItem, CartProduct } from "../../features/cartSlice";
 import { toast } from "react-toastify";
 import { useEffect } from "react";
 
@@ -18,7 +18,8 @@ const TopProduct = () => {
   const dispatch = useCartDispatch();
 
   const handleAddToCart = (item: CartProduct) => {
-    dispatch(cartSlice.actions.addToCart(item));
+    console.log("Product to add", item);
+    dispatch(addCartItem(item));
     toast.success("Ajouté dans le panier", {
       autoClose: 1500,
     });
