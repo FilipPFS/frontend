@@ -1,0 +1,9 @@
+.main {
+    display: flex;
+    justify-content: center;
+    gap: 40px;
+    padding: 30px;
+    margin: 40px;
+    background-color: rgb(199, 230, 230);
+    border-radius: 10px;
+}

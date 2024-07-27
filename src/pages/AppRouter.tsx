@@ -16,6 +16,7 @@ import { useEffect } from "react";
 import { fetchProducts } from "../features/productSlice";
 import { fetchCartItems } from "../features/cartSlice";
 import { fetchTopProducts } from "../features/topProductSlice";
+import DashUsers from "./Dashboard/DashUsers/DashUsers";
 
 const AppRouter = () => {
   const dispatch = useCartDispatch();
@@ -47,7 +48,7 @@ const AppRouter = () => {
         <Route path="/top-product/:id" element={<TopProduct />} />
         <Route path="/sign-up" element={<SingUp />} />
         <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/account" element={<Account />} />
       </Routes>
       <Footer />
