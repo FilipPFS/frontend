@@ -7,3 +7,33 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.allProducts {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.productBlock {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.productImg {
+    width: 6%;
+    border-radius: 50%;
+}
+
+.btn {
+    background-color: rgb(127, 127, 185);
+    padding: 3px 14px;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.btn:hover {
+    background-color: rgb(94, 145, 211);
+}

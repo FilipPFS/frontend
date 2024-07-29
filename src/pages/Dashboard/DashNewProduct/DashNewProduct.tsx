@@ -1,11 +1,14 @@
+import { useState } from "react";
 import styles from "./DashNewProduct.module.css";
+import { useCartDispatch } from "../../../store/hooks";
+import { addProduct } from "../../../features/productSlice";
+import FormProduct from "../../../components/FormProduct/FormProduct";
 
-type Props = {};
-
-const DashNewProduct = (props: Props) => {
+const DashNewProduct = () => {
   return (
     <div className={styles.container}>
-      <h2>Add new product</h2>
+      <h2>Ajouter un produit</h2>
+      <FormProduct />
     </div>
   );
 };

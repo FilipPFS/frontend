@@ -10,8 +10,6 @@ const Slider = () => {
   const topProducts = useCartSelector((state) => state.topProduct.topProducts);
   const dispatch = useCartDispatch();
 
-  console.log(topProducts);
-
   useEffect(() => {
     const timeoutId = setTimeout(() => {
       if (index < topProducts.length - 1) {

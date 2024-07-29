@@ -1,18 +1,15 @@
 import { useEffect, useState } from "react";
-import DashHeader from "../DashHeader/DashHeader";
 import styles from "./DashUsers.module.css";
 import { UserType } from "../../Account/Account";
 import axios from "axios";
 import noavatar from "../../../images/noavatar.webp";
 import { FaShieldAlt } from "react-icons/fa";
-import { log } from "console";
 
 type Props = {};
 
 const DashUsers = (props: Props) => {
   const [users, setUsers] = useState<UserType[]>([]);
   const token = localStorage.getItem("token");
-  console.log(token);
 
   const fetchUsers = async () => {
     try {
@@ -34,7 +31,6 @@ const DashUsers = (props: Props) => {
           },
         }
       );
-      console.log(response);
       setUsers(response.data.users);
     } catch (err) {
       console.error(err);
@@ -51,7 +47,7 @@ const DashUsers = (props: Props) => {
       <section className={styles.allUsers}>
         {users.map((user) => {
           return (
-            <div className={styles.userBlock}>
+            <div className={styles.userBlock} key={user._id}>
               <img src={noavatar} alt="no avatar" className={styles.userImg} />
               <h4>
                 {user.firstName} {user.lastName}

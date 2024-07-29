@@ -21,8 +21,6 @@ const Header = () => {
     setOpen((prevOpen) => !prevOpen);
   };
 
-  console.log(open);
-
   const cart = useCartSelector((state) => state.cart.items);
 
   const cartSum = cart.reduce((total, product) => total + product.quantity, 0);

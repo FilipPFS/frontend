@@ -20,8 +20,6 @@ const ProductList = ({ products }: ProductListProps) => {
     });
   };
 
-  console.log(cart);
-
   return (
     <div className={styles.parentContainer}>
       <h1>Nos produits</h1>

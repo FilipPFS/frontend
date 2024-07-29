@@ -7,6 +7,7 @@ import { Route, Routes } from "react-router-dom";
 import DashUsers from "./DashUsers/DashUsers";
 import DashProducts from "./DashProducts/DashProducts";
 import DashNewProduct from "./DashNewProduct/DashNewProduct";
+import DashTopOffers from "./DashTopOffers/DashTopOffers";
 
 const Dashboard = () => {
   const userId = localStorage.getItem("userId");
@@ -34,6 +35,7 @@ const Dashboard = () => {
         <Route path="/users" element={<DashUsers />} />
         <Route path="/products" element={<DashProducts />} />
         <Route path="/new-product" element={<DashNewProduct />} />
+        <Route path="/top-offers" element={<DashTopOffers />} />
       </Routes>
     </main>
   );
