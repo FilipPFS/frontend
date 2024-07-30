@@ -4,11 +4,13 @@ import { UserType } from "../../Account/Account";
 import axios from "axios";
 import noavatar from "../../../images/noavatar.webp";
 import { FaShieldAlt } from "react-icons/fa";
+import Modal from "../../../components/Modal/Modal";
 
 type Props = {};
 
 const DashUsers = (props: Props) => {
   const [users, setUsers] = useState<UserType[]>([]);
+  const [clickedUserId, setClickedUserId] = useState<string | null>(null);
   const token = localStorage.getItem("token");
 
   const fetchUsers = async () => {
@@ -32,9 +34,16 @@ const DashUsers = (props: Props) => {
         }
       );
       setUsers(response.data.users);
+      setClickedUserId(null);
     } catch (err) {
       console.error(err);
     }
+  };
+
+  const handleButtonClick = (userId: string) => {
+    setClickedUserId((prevClickedUserId) =>
+      prevClickedUserId === userId ? null : userId
+    );
   };
 
   useEffect(() => {
@@ -59,11 +68,19 @@ const DashUsers = (props: Props) => {
                 </span>
               ) : (
                 <button
-                  onClick={() => setAdmin(user._id)}
+                  onClick={() => handleButtonClick(user._id)}
                   className={styles.btnSetAdmin}
                 >
                   Set Admin
                 </button>
+              )}
+              {clickedUserId === user._id && (
+                <Modal
+                  message="Êtes-vous sûr de vouloir ajouter cet utilisateur en tant qu'administrateur ?"
+                  setClicked={() => setClickedUserId(null)}
+                  setAdmin={setAdmin}
+                  id={user._id}
+                />
               )}
             </div>
           );

@@ -25,6 +25,10 @@
     border-radius: 50%;
 }
 
+.productTitle {
+    width: 120px;
+}
+
 .btn {
     background-color: rgb(127, 127, 185);
     padding: 3px 14px;

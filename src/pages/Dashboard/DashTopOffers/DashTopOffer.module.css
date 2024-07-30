@@ -7,3 +7,89 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.topOffers {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 20px;
+    background-color: rgb(214, 224, 223);
+    padding: 20px;
+}
+
+.section p {
+    font-size: 12px;
+}
+
+.imgContainer {
+    width: 25%;
+}
+
+.imgContainer img {
+    width: 100%;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 70%;
+}
+
+.form {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+}
+
+.formInput {
+    width: 100%;
+}
+
+.formInfoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    width: 60%;
+}
+
+.formInfoContainer input,
+.formInfoContainer textarea,
+.formInput {
+    padding: 3px;
+    border: none;
+    border-radius: 3px;
+}
+
+.form textarea,
+.form input {
+    font-size: 12px;
+}
+
+.form textarea {
+    height: 80px;
+}
+
+.btnSection {
+    display: flex;
+    gap: 12px;
+}
+
+.validBtn {
+    margin-top: 8px;
+    padding: 5px 15px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    background-color: azure;
+}
+
+.validBtn:hover {
+    background-color: rgb(200, 222, 222);
+}

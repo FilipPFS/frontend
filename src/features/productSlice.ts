@@ -42,7 +42,7 @@ export const addProduct = createAsyncThunk(
   "products/addProduct",
   async (newProduct: FormProduct) => {
     try {
-      const response: AxiosResponse = await axios.post(
+      const response: AxiosResponse<Product> = await axios.post(
         "http://localhost:5000/api/product",
         newProduct,
         {

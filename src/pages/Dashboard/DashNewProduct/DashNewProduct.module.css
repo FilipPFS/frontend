@@ -7,3 +7,17 @@
     padding: 20px;
     border-radius: 10px;
 }
+
+.child {
+    display: flex;
+    justify-content: space-between;
+}
+
+.child select {
+    border: none;
+    background-color: rgb(227, 226, 244);
+    border-radius: 5px;
+    padding: 5px 10px;
+    font-size: 15px;
+    font-weight: 600;
+}

@@ -19,10 +19,10 @@ const DashHeader = ({ user }: Props) => {
         <h2>{user?.firstName}</h2>
       </div>
       <nav className={styles.navigation}>
-        <Link to={"/dashboard/products"}>Products</Link>
-        <Link to={"/dashboard/top-offers"}>Top Offers</Link>
-        <Link to={"/dashboard/users"}>Users</Link>
-        <Link to={"/dashboard/new-product"}>Add product</Link>
+        <Link to={"/dashboard/products"}>Produits</Link>
+        <Link to={"/dashboard/top-offers"}>Top Offres</Link>
+        <Link to={"/dashboard/users"}>Utilisateurs</Link>
+        <Link to={"/dashboard/new-product"}>Ajouter un produit</Link>
       </nav>
     </section>
   );

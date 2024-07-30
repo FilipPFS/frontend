@@ -24,7 +24,7 @@ const DashProducts = (props: Props) => {
                 alt="no avatar"
                 className={styles.productImg}
               />
-              <h4>{product.title}</h4>
+              <h4 className={styles.productTitle}>{product.title}</h4>
               <button className={styles.btn}>Modifier</button>
               <button
                 onClick={() => handleDelete(product._id)}

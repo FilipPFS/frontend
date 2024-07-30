@@ -5,4 +5,14 @@ export type TopProduct = {
   img: string;
   newPrice: number;
   oldPrice: number;
+  stock?: number;
+};
+
+export type FormOffer = {
+  title: string;
+  description: string;
+  img: string;
+  newPrice: number;
+  oldPrice: number;
+  stock?: number;
 };
