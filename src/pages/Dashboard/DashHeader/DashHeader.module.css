@@ -15,6 +15,12 @@
     gap: 6px;
 }
 
+.link {
+    display: flex;
+    align-items: center;
+    gap: 11px;
+}
+
 .navigation a {
     padding: 10px 20px;
     color: black;

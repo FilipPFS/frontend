@@ -1,4 +1,11 @@
-import { FaShieldAlt } from "react-icons/fa";
+import {
+  FaBolt,
+  FaBox,
+  FaCube,
+  FaPlus,
+  FaShieldAlt,
+  FaUser,
+} from "react-icons/fa";
 import styles from "./DashHeader.module.css";
 import { UserType } from "../../Account/Account";
 import axios, { AxiosResponse } from "axios";
@@ -19,10 +26,22 @@ const DashHeader = ({ user }: Props) => {
         <h2>{user?.firstName}</h2>
       </div>
       <nav className={styles.navigation}>
-        <Link to={"/dashboard/products"}>Produits</Link>
-        <Link to={"/dashboard/top-offers"}>Top Offres</Link>
-        <Link to={"/dashboard/users"}>Utilisateurs</Link>
-        <Link to={"/dashboard/new-product"}>Ajouter un produit</Link>
+        <Link to={"/dashboard/products"} className={styles.link}>
+          <FaCube />
+          Produits
+        </Link>
+        <Link to={"/dashboard/top-offers"} className={styles.link}>
+          <FaBolt />
+          Top Offres
+        </Link>
+        <Link to={"/dashboard/users"} className={styles.link}>
+          <FaUser />
+          Utilisateurs
+        </Link>
+        <Link to={"/dashboard/new-product"} className={styles.link}>
+          <FaPlus />
+          Ajouter un produit
+        </Link>
       </nav>
     </section>
   );

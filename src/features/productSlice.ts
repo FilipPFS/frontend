@@ -62,7 +62,7 @@ export const addProduct = createAsyncThunk(
 
 export const updateProduct = createAsyncThunk(
   "products/updateProduct",
-  async (payload: { id: string; updatedProduct: FormProduct }) => {
+  async (payload: { id: string; updatedProduct: FormData }) => {
     try {
       const response: AxiosResponse<Product> = await axios.put(
         `http://localhost:5000/api/product/${payload.id}`,
@@ -70,6 +70,7 @@ export const updateProduct = createAsyncThunk(
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
