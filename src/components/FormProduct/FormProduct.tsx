@@ -3,7 +3,7 @@ import { useCartDispatch } from "../../store/hooks";
 import styles from "./FormProduct.module.css";
 import { addProduct } from "../../features/productSlice";
 
-type FormData = {
+export type FormDataProduct = {
   title: string;
   description: string;
   img: string;
@@ -16,7 +16,7 @@ type FormData = {
 const FormProduct = () => {
   const dispatch = useCartDispatch();
 
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataProduct>({
     title: "",
     description: "",
     img: "",

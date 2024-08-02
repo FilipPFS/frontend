@@ -1,10 +1,15 @@
 import { useCartDispatch, useCartSelector } from "../../../store/hooks";
 import { deleteProduct } from "../../../features/productSlice";
 import styles from "./DashProducts.module.css";
+import { Link } from "react-router-dom";
+import { useEffect } from "react";
 
 type Props = {};
 
 const DashProducts = (props: Props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const products = useCartSelector((state) => state.products.products);
   const dispatch = useCartDispatch();
 
@@ -25,7 +30,9 @@ const DashProducts = (props: Props) => {
                 className={styles.productImg}
               />
               <h4 className={styles.productTitle}>{product.title}</h4>
-              <button className={styles.btn}>Modifier</button>
+              <Link to={`/dashboard/product/${product._id}`}>
+                <button className={styles.btn}>Modifier</button>
+              </Link>
               <button
                 onClick={() => handleDelete(product._id)}
                 className={styles.btn}

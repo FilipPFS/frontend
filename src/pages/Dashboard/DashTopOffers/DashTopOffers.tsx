@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useCartDispatch, useCartSelector } from "../../../store/hooks";
 import styles from "./DashTopOffer.module.css";
 import {
@@ -7,10 +7,14 @@ import {
 } from "../../../features/topProductSlice";
 import { FormData } from "../../../components/FormTopOffer/FormTopOffer";
 import { TopProduct } from "../../../topProducts";
+import { toast } from "react-toastify";
 
 type Props = {};
 
 const DashTopOffers = (props: Props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const topOffers = useCartSelector((state) => state.topProduct.topProducts);
   const dispatch = useCartDispatch();
 
@@ -39,6 +43,9 @@ const DashTopOffers = (props: Props) => {
     if (selected) {
       dispatch(updateTopOffer({ id: selected, updatedOffer: formData }));
       setSelected(null);
+      toast.success("Modifié avec succès.", {
+        autoClose: 1500,
+      });
     }
   };
 

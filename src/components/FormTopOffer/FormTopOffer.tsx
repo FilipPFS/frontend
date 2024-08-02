@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./FormTopOffer.module.css";
 import { useCartDispatch } from "../../store/hooks";
 import { addTopOffer } from "../../features/topProductSlice";
+import { toast } from "react-toastify";
 
 export type FormData = {
   title: string;
@@ -39,6 +40,9 @@ const FormTopOffer = () => {
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     dispatch(addTopOffer(formData));
+    toast.success("Ajouté avec succès.", {
+      autoClose: 1500,
+    });
   };
 
   return (

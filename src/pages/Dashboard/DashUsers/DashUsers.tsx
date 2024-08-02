@@ -9,6 +9,9 @@ import Modal from "../../../components/Modal/Modal";
 type Props = {};
 
 const DashUsers = (props: Props) => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [users, setUsers] = useState<UserType[]>([]);
   const [clickedUserId, setClickedUserId] = useState<string | null>(null);
   const token = localStorage.getItem("token");

@@ -3,7 +3,6 @@ import ProductList from "../../components/Prdoucts/ProductList";
 import { Product } from "../../products";
 import { buttons } from "./buttons";
 import styles from "./Products.module.css";
-import axios from "axios";
 import { useCartSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 

@@ -25,7 +25,7 @@ export const fetchTopProducts = createAsyncThunk(
 const token = localStorage.getItem("token");
 
 export const addTopOffer = createAsyncThunk(
-  "products/addProduct",
+  "topProducts/addTopProduct",
   async (newProduct: FormOffer) => {
     try {
       const response: AxiosResponse<TopProduct> = await axios.post(
@@ -46,7 +46,7 @@ export const addTopOffer = createAsyncThunk(
 );
 
 export const updateTopOffer = createAsyncThunk(
-  "products/updateTopProduct",
+  "topProducts/updateTopProduct",
   async (payload: { id: string; updatedOffer: FormOffer }) => {
     try {
       const response: AxiosResponse<TopProduct> = await axios.put(

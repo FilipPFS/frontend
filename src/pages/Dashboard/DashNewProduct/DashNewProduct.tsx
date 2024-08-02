@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import styles from "./DashNewProduct.module.css";
 import FormProduct from "../../../components/FormProduct/FormProduct";
 import FormTopOffer from "../../../components/FormTopOffer/FormTopOffer";
 
 const DashNewProduct = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   const [selected, setSelected] = useState(true);
 
   const handleSelectChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
