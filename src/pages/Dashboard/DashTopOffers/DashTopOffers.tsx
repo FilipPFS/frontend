@@ -5,24 +5,33 @@ import {
   deleteTopOffer,
   updateTopOffer,
 } from "../../../features/topProductSlice";
-import { FormData } from "../../../components/FormTopOffer/FormTopOffer";
 import { TopProduct } from "../../../topProducts";
 import { toast } from "react-toastify";
 
 type Props = {};
 
+type FormDataTopOffer = {
+  title: string;
+  description: string;
+  image: File | null;
+  newPrice: number;
+  oldPrice: number;
+  stock: number;
+};
+
 const DashTopOffers = (props: Props) => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   const topOffers = useCartSelector((state) => state.topProduct.topProducts);
   const dispatch = useCartDispatch();
-
+  const [preview, setPreview] = useState<string | null>(null);
   const [selected, setSelected] = useState<string | null>(null);
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataTopOffer>({
     title: "",
     description: "",
-    img: "",
+    image: null,
     newPrice: 0,
     oldPrice: 0,
     stock: 0,
@@ -38,10 +47,33 @@ const DashTopOffers = (props: Props) => {
     }));
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: file,
+      }));
+      const imageUrl = URL.createObjectURL(file);
+      setPreview(imageUrl);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
+    const updatedFormData = new FormData();
+    updatedFormData.append("title", formData.title);
+    updatedFormData.append("description", formData.description);
+    updatedFormData.append("newPrice", formData.newPrice.toString());
+    updatedFormData.append("oldPrice", formData.oldPrice.toString());
+    updatedFormData.append("stock", formData.stock.toString());
+
+    if (formData.image) {
+      updatedFormData.append("image", formData.image);
+    }
+
     if (selected) {
-      dispatch(updateTopOffer({ id: selected, updatedOffer: formData }));
+      dispatch(updateTopOffer({ id: selected, updatedOffer: updatedFormData }));
       setSelected(null);
       toast.success("Modifié avec succès.", {
         autoClose: 1500,
@@ -57,13 +89,15 @@ const DashTopOffers = (props: Props) => {
     setFormData({
       title: topOffer.title,
       description: topOffer.description,
-      img: topOffer.img,
+      image: null,
       newPrice: topOffer.newPrice,
       oldPrice: topOffer.oldPrice,
       stock: topOffer.stock!,
     });
     setSelected(topOffer._id);
   };
+
+  console.log(formData);
 
   return (
     <div className={styles.container}>
@@ -74,15 +108,17 @@ const DashTopOffers = (props: Props) => {
             {selected === topOffer._id ? (
               <form className={styles.form} onSubmit={handleSubmit}>
                 <div className={styles.imgContainer}>
-                  <img src={topOffer.img} alt={topOffer.title} />
+                  {preview ? (
+                    <img src={preview} alt="Preview" />
+                  ) : (
+                    <img src={topOffer.img} alt={topOffer.title} />
+                  )}
                   <input
-                    type="text"
-                    name="img"
-                    value={formData.img}
+                    type="file"
+                    name="image"
                     className={styles.formInput}
                     placeholder="Lien de l'image"
-                    onChange={handleChange}
-                    required
+                    onChange={handleImageChange}
                   />
                 </div>
                 <div className={styles.formInfoContainer}>

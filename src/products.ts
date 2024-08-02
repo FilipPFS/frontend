@@ -12,7 +12,7 @@ export type Product = {
 export type FormProduct = {
   title: string;
   description: string;
-  img: string;
+  image: File | null;
   price: number;
   category: string;
   stock?: number;

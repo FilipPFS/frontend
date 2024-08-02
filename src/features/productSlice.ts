@@ -40,7 +40,7 @@ export const deleteProduct = createAsyncThunk(
 
 export const addProduct = createAsyncThunk(
   "products/addProduct",
-  async (newProduct: FormProduct) => {
+  async (newProduct: FormData) => {
     try {
       const response: AxiosResponse<Product> = await axios.post(
         "http://localhost:5000/api/product",
@@ -48,6 +48,7 @@ export const addProduct = createAsyncThunk(
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );

@@ -2,11 +2,12 @@ import { useState } from "react";
 import { useCartDispatch } from "../../store/hooks";
 import styles from "./FormProduct.module.css";
 import { addProduct } from "../../features/productSlice";
+import { toast } from "react-toastify";
 
 export type FormDataProduct = {
   title: string;
   description: string;
-  img: string;
+  image: File | null;
   price: number;
   category: string;
   stock: number;
@@ -15,11 +16,12 @@ export type FormDataProduct = {
 
 const FormProduct = () => {
   const dispatch = useCartDispatch();
+  const [preview, setPreview] = useState<string | null>(null);
 
   const [formData, setFormData] = useState<FormDataProduct>({
     title: "",
     description: "",
-    img: "",
+    image: null,
     price: 0,
     category: "",
     stock: 0,
@@ -43,10 +45,39 @@ const FormProduct = () => {
     }));
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: file,
+      }));
+      const imageUrl = URL.createObjectURL(file);
+      setPreview(imageUrl);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(addProduct(formData));
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("title", formData.title);
+    formDataToSend.append("description", formData.description);
+    if (formData.image) {
+      formDataToSend.append("image", formData.image);
+    }
+    formDataToSend.append("price", formData.price.toString());
+    formDataToSend.append("category", formData.category);
+    formDataToSend.append("stock", formData.stock.toString());
+    formDataToSend.append("inStock", formData.inStock.toString());
+
+    dispatch(addProduct(formDataToSend));
+    toast.success("Ajouté avec succès.", {
+      autoClose: 1500,
+    });
   };
+
+  console.log("Form Data", formData);
 
   return (
     <form className={styles.form} onSubmit={handleSubmit}>
@@ -66,14 +97,17 @@ const FormProduct = () => {
         onChange={handleChange}
         placeholder="Description"
       />
-      <label>Image Lien</label>
-      <input
-        type="text"
-        name="img"
-        value={formData.img}
-        onChange={handleChange}
-        placeholder="Image Lien"
-      />
+      <label>Image</label>
+      <input type="file" accept="image/*" onChange={handleImageChange} />
+      {preview && (
+        <div style={{ marginTop: "10px" }}>
+          <img
+            src={preview}
+            alt="Preview"
+            style={{ maxWidth: "100%", maxHeight: "300px" }}
+          />
+        </div>
+      )}
       <label>Prix</label>
       <input
         type="number"

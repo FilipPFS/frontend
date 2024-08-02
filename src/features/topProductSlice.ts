@@ -26,7 +26,7 @@ const token = localStorage.getItem("token");
 
 export const addTopOffer = createAsyncThunk(
   "topProducts/addTopProduct",
-  async (newProduct: FormOffer) => {
+  async (newProduct: FormData) => {
     try {
       const response: AxiosResponse<TopProduct> = await axios.post(
         "http://localhost:5000/api/topProduct",
@@ -34,6 +34,7 @@ export const addTopOffer = createAsyncThunk(
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -47,7 +48,7 @@ export const addTopOffer = createAsyncThunk(
 
 export const updateTopOffer = createAsyncThunk(
   "topProducts/updateTopProduct",
-  async (payload: { id: string; updatedOffer: FormOffer }) => {
+  async (payload: { id: string; updatedOffer: FormData }) => {
     try {
       const response: AxiosResponse<TopProduct> = await axios.put(
         `http://localhost:5000/api/topProduct/${payload.id}`,
@@ -55,6 +56,7 @@ export const updateTopOffer = createAsyncThunk(
         {
           headers: {
             Authorization: `Bearer ${token}`,
+            "Content-Type": "multipart/form-data",
           },
         }
       );
@@ -129,6 +131,7 @@ const topProductSlice = createSlice({
         (state, action: PayloadAction<TopProduct | undefined>) => {
           state.status = "succeeded";
           if (action.payload) {
+            console.log(action.payload);
             const index = state.topProducts.findIndex(
               (product) => product._id === action!.payload!._id
             );

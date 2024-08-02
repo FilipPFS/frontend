@@ -4,10 +4,10 @@ import { useCartDispatch } from "../../store/hooks";
 import { addTopOffer } from "../../features/topProductSlice";
 import { toast } from "react-toastify";
 
-export type FormData = {
+export type FormDataTopOffer = {
   title: string;
   description: string;
-  img: string;
+  image: File | null;
   newPrice: number;
   oldPrice: number;
   stock: number;
@@ -15,11 +15,12 @@ export type FormData = {
 
 const FormTopOffer = () => {
   const dispatch = useCartDispatch();
+  const [preview, setPreview] = useState<string | null>(null);
 
-  const [formData, setFormData] = useState<FormData>({
+  const [formData, setFormData] = useState<FormDataTopOffer>({
     title: "",
     description: "",
-    img: "",
+    image: null,
     newPrice: 0,
     oldPrice: 0,
     stock: 0,
@@ -37,9 +38,33 @@ const FormTopOffer = () => {
     }));
   };
 
+  const handleImageChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (file) {
+      setFormData((prevData) => ({
+        ...prevData,
+        image: file,
+      }));
+      const imageUrl = URL.createObjectURL(file);
+      setPreview(imageUrl);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    dispatch(addTopOffer(formData));
+
+    const formDataToSend = new FormData();
+    formDataToSend.append("title", formData.title);
+    formDataToSend.append("description", formData.description);
+    if (formData.image) {
+      formDataToSend.append("image", formData.image);
+    }
+    formDataToSend.append("newPrice", formData.newPrice.toString());
+    formDataToSend.append("oldPrice", formData.oldPrice.toString());
+    formDataToSend.append("stock", formData.stock.toString());
+
+    dispatch(addTopOffer(formDataToSend));
+
     toast.success("Ajouté avec succès.", {
       autoClose: 1500,
     });
@@ -63,14 +88,17 @@ const FormTopOffer = () => {
         onChange={handleChange}
         placeholder="Description"
       />
-      <label>Image Lien</label>
-      <input
-        type="text"
-        name="img"
-        value={formData.img}
-        onChange={handleChange}
-        placeholder="Image Lien"
-      />
+      <label>Image</label>
+      <input type="file" accept="image/*" onChange={handleImageChange} />
+      {preview && (
+        <div style={{ marginTop: "10px" }}>
+          <img
+            src={preview}
+            alt="Preview"
+            style={{ maxWidth: "100%", maxHeight: "300px" }}
+          />
+        </div>
+      )}
       <label>Nouveau Prix</label>
       <input
         type="number"
