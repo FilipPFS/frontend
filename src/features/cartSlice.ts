@@ -1,5 +1,6 @@
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit";
 import axios, { AxiosResponse } from "axios";
+import { Product } from "../products";
 
 export type CartProduct = {
   productId: string;
@@ -38,6 +39,16 @@ export const fetchCartItems = createAsyncThunk(
       `http://localhost:5000/api/cart/${userId}`
     );
     return response.data;
+  }
+);
+
+export const deleteCartItems = createAsyncThunk(
+  "products/deleteCartItems",
+  async (userId: string | null) => {
+    const response: AxiosResponse<{ user: { cart: CartProduct[] } }> =
+      await axios.delete(`http://localhost:5000/api/cart/clear-all/${userId}`);
+    console.log(response);
+    return response.data.user.cart;
   }
 );
 
@@ -168,6 +179,21 @@ const cartSlice = createSlice({
       .addCase(addCartItem.rejected, (state, action) => {
         state.status = "failed";
         state.error = action.payload as string;
+      })
+      .addCase(deleteCartItems.pending, (state) => {
+        state.status = "loading";
+        state.error = null;
+      })
+      .addCase(
+        deleteCartItems.fulfilled,
+        (state, action: PayloadAction<CartProduct[]>) => {
+          state.status = "succeeded";
+          state.items = action.payload;
+        }
+      )
+      .addCase(deleteCartItems.rejected, (state, action) => {
+        state.status = "failed";
+        state.error = action.error.message || "Failed to delete cart items";
       });
   },
 });

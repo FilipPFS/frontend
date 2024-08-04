@@ -17,6 +17,8 @@ import { fetchProducts } from "../features/productSlice";
 import { fetchCartItems } from "../features/cartSlice";
 import { fetchTopProducts } from "../features/topProductSlice";
 import DashUsers from "./Dashboard/DashUsers/DashUsers";
+import PaySucces from "./PaySucces/PaySucces";
+import PayFailed from "./PayFailed/PayFailed";
 
 const AppRouter = () => {
   const dispatch = useCartDispatch();
@@ -50,6 +52,8 @@ const AppRouter = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard/*" element={<Dashboard />} />
         <Route path="/account" element={<Account />} />
+        <Route path="/success" element={<PaySucces />} />
+        <Route path="/fail" element={<PayFailed />} />
       </Routes>
       <Footer />
     </Router>

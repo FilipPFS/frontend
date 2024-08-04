@@ -1,12 +1,14 @@
 import { useEffect } from "react";
 import cartSlice, {
   CartProduct,
+  deleteCartItems,
   fetchCartItems,
 } from "../../features/cartSlice";
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import styles from "./Cart.module.css";
 import axios from "axios";
+import { loadStripe } from "@stripe/stripe-js";
 
 const Cart = () => {
   const userId = localStorage.getItem("userId");
@@ -58,7 +60,42 @@ const Cart = () => {
   );
   const formattedTotalPrice = (total / 100).toFixed(2);
 
-  console.log(cartItems);
+  const makePayment = async () => {
+    console.log("makePayment function called");
+    const stripe = await loadStripe(
+      "pk_test_51PiiELRv47bx0DCZur5yn2ItBmbIwz2TfXMkTjGgFN7mScwDKM1uvNLgnwA5osnrPbnNtQ2w0ixeoKbUyMhFytlQ00qTYK92qW" ||
+        ""
+    );
+    const body = {
+      products: cartItems,
+      userId: userId,
+    };
+
+    try {
+      const response = await axios.post(
+        "http://localhost:5000/create-checkout-session",
+        body
+      );
+      console.log("Response from create-checkout-session:", response);
+      const session = response.data;
+
+      const result = await stripe?.redirectToCheckout({
+        sessionId: session.id,
+      });
+
+      if (result?.error) {
+        console.log(result.error.message);
+      } else {
+        console.log("Redirecting to Stripe checkout...");
+      }
+    } catch (err) {
+      console.log("Error during payment process:", err);
+    }
+  };
+
+  const deleteAll = () => {
+    dispatch(deleteCartItems(userId));
+  };
 
   return (
     <main className={styles.container}>
@@ -101,7 +138,9 @@ const Cart = () => {
       <div className={styles.billContainer}>
         <div className={styles.cartBill}>
           <h1>Total: {formattedTotalPrice}€</h1>
-          <button disabled={!total}>Passer la commande</button>
+          <button disabled={!total} onClick={makePayment}>
+            Passer la commande
+          </button>
         </div>
       </div>
     </main>
