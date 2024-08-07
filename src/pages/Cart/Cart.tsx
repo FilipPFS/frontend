@@ -9,6 +9,7 @@ import { RootState } from "../../store/store";
 import styles from "./Cart.module.css";
 import axios from "axios";
 import { loadStripe } from "@stripe/stripe-js";
+import { log } from "console";
 
 const Cart = () => {
   const userId = localStorage.getItem("userId");

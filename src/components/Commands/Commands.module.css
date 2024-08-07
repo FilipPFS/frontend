@@ -1,0 +1,168 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background-color: rgb(229, 245, 245);
+    padding: 20px 40px;
+    margin-top: 20px;
+    border-radius: 10px;
+}
+
+.firstChild {
+    display: flex;
+    justify-content: space-between;
+}
+
+.infoContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.infoElement {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.infoInput {
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+}
+
+.productContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 20px;
+}
+
+.productBlock {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 40px;
+}
+
+.imgContainer {
+    width: 13%;
+}
+
+.imgContainer img {
+    width: 100%;
+}
+
+.productInfos {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.productInfoInput {
+    background-color: white;
+    padding: 5px 15px;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 4px 12px;
+    width: 100px;
+}
+
+.productTitle {
+    min-width: 110px;
+    text-align: left;
+}
+
+.amount {
+    font-size: 22px;
+    font-weight: 600;
+}
+
+@media (max-width: 1024px) {
+    .firstChild {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .productContainer {
+        align-items: flex-start;
+    }
+
+    .productBlock {
+        justify-content: flex-start;
+    }
+
+    .imgContainer {
+        width: 10%;
+    }
+
+    .infoContainer {
+        flex-direction: row;
+    }
+
+    .infoElement {
+        width: 50%;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .firstChild span {
+        font-size: 14px;
+    }
+
+    .infoContainer {
+        flex-direction: column;
+    }
+
+    .infoElement {
+        width: 100%;
+    }
+
+    .imgContainer {
+        width: 50%;
+    }
+
+    .productBlock {
+        margin-top: 20px;
+    }
+
+    .productInfos {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .productInfoInput {
+        padding: 3px 10px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container h5 {
+        text-align: center;
+    }
+
+    .container {
+        padding: 10px 15px;
+    }
+
+    .container h5 {
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 360px) {
+
+    .container h5 {
+        font-size: 12px;
+    }
+
+    .firstChild span {
+        font-size: 10px;
+    }
+
+    .productInfoInput {
+        padding: 0 5px;
+    }
+}

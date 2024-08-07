@@ -1,6 +1,7 @@
 import {
   FaBolt,
   FaBox,
+  FaClipboardList,
   FaCube,
   FaPlus,
   FaShieldAlt,
@@ -33,6 +34,10 @@ const DashHeader = ({ user }: Props) => {
         <Link to={"/dashboard/top-offers"} className={styles.link}>
           <FaBolt />
           Top Offres
+        </Link>
+        <Link to={"/dashboard/commands"} className={styles.link}>
+          <FaClipboardList />
+          Commandes
         </Link>
         <Link to={"/dashboard/users"} className={styles.link}>
           <FaUser />

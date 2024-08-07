@@ -9,6 +9,7 @@ import DashProducts from "./DashProducts/DashProducts";
 import DashNewProduct from "./DashNewProduct/DashNewProduct";
 import DashTopOffers from "./DashTopOffers/DashTopOffers";
 import DashSingleProduct from "./DashSingleProduct/DashSingleProduct";
+import DashCommands from "./DashCommands/DashCommands";
 
 const Dashboard = () => {
   const userId = localStorage.getItem("userId");
@@ -45,6 +46,7 @@ const Dashboard = () => {
       <Routes>
         <Route path="/" element={<DashProducts />} />
         <Route path="/users" element={<DashUsers />} />
+        <Route path="/commands" element={<DashCommands />} />
         <Route path="/products" element={<DashProducts />} />
         <Route path="/new-product" element={<DashNewProduct />} />
         <Route path="/top-offers" element={<DashTopOffers />} />

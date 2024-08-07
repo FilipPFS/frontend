@@ -26,6 +26,7 @@
     color: black;
     background-color: rgb(228, 239, 240);
     border-radius: 8px;
+    font-size: 13px;
 }
 
 .navigation a:hover {
