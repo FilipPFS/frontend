@@ -9,7 +9,7 @@ const Engagements = () => {
         {values.map((value, index) => {
           return (
             <section key={index} className={styles.section}>
-              <img src={value.img} className={styles.img} />
+              <img src={value.img} className={styles.img} alt={value.alt} />
               <h3>{value.title}</h3>
               <p>{value.description}</p>
             </section>

@@ -29,6 +29,8 @@ const Cart = () => {
     }
   };
 
+  console.log("Cart", cartItems);
+
   useEffect(() => {
     getUserInfo();
   }, []);
@@ -78,6 +80,11 @@ const Cart = () => {
   );
   const formattedTotalPrice = (total / 100).toFixed(2);
 
+  const updatedCartItems = cartItems.map((item) => ({
+    ...item,
+    totalPrice: item.price * item.quantity,
+  }));
+
   const makePayment = async () => {
     console.log("makePayment function called");
     const stripe = await loadStripe(
@@ -118,7 +125,7 @@ const Cart = () => {
         {cartItems.length === 0 && (
           <p>Vous n'avez pas d'article dans le panier.</p>
         )}
-        {cartItems.map((item) => {
+        {updatedCartItems.map((item) => {
           return (
             <article key={item.productId} className={styles.product}>
               <div className={styles.imgContainer}>
@@ -144,7 +151,7 @@ const Cart = () => {
                   </span>
                 </div>
                 <div className={styles.priceBlock}>
-                  <p>{(item.price / 100).toFixed(2)}€</p>
+                  <p>{(item.totalPrice / 100).toFixed(2)}€</p>
                 </div>
               </div>
             </article>

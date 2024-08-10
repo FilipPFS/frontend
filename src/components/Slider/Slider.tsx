@@ -49,7 +49,11 @@ const Slider = () => {
   return (
     <div className={styles.parentContainer}>
       <div className={styles.container}>
-        <button onClick={removeIndex} className={styles.buttonLeftIcon}>
+        <button
+          onClick={removeIndex}
+          className={styles.buttonLeftIcon}
+          aria-label="Left icon"
+        >
           <FaAngleLeft className={styles.leftIcon} />
         </button>
         <section className={styles.textContainer}>
@@ -70,7 +74,11 @@ const Slider = () => {
         <section className={styles.imgContainer}>
           <img src={product.img} alt={product.title} />
         </section>
-        <button onClick={addIndex} className={styles.buttonRightIcon}>
+        <button
+          onClick={addIndex}
+          className={styles.buttonRightIcon}
+          aria-label="Right Icon"
+        >
           <FaAngleRight className={styles.rightIcon} />
         </button>
       </div>

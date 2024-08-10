@@ -42,12 +42,12 @@ const Header = () => {
           </Link>
         )}
         <div className={styles.cartBlock}>
-          <Link to={"/cart"}>
+          <Link to={"/cart"} aria-label="Panier">
             <FaShoppingCart className={styles.cartIcon} />
           </Link>
           <span>{cartSum}</span>
           {admin && (
-            <Link to={"/dashboard"}>
+            <Link to={"/dashboard"} aria-label="Dashboard">
               <FaShieldAlt className={styles.shieldIcon} />
             </Link>
           )}
@@ -71,13 +71,21 @@ const Header = () => {
             )}
             <div className={styles.cartBlock}>
               <div className={styles.cartItem}>
-                <Link to={"/cart"} onClick={() => setOpen(false)}>
+                <Link
+                  to={"/cart"}
+                  aria-label="Panier"
+                  onClick={() => setOpen(false)}
+                >
                   <FaShoppingCart className={styles.cartIcon} />
                 </Link>
                 <span>{cartSum}</span>
               </div>
               {admin && (
-                <Link to={"/dashboard"} onClick={() => setOpen(false)}>
+                <Link
+                  to={"/dashboard"}
+                  aria-label="Dashboard"
+                  onClick={() => setOpen(false)}
+                >
                   <FaShieldAlt className={styles.shieldIcon} />
                 </Link>
               )}
