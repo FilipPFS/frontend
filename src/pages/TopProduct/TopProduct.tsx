@@ -18,7 +18,6 @@ const TopProduct = () => {
   const dispatch = useCartDispatch();
 
   const handleAddToCart = (item: CartProduct) => {
-    console.log("Product to add", item);
     dispatch(addCartItem(item));
     toast.success("Ajouté dans le panier", {
       autoClose: 1500,

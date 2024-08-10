@@ -110,7 +110,7 @@
 
 .textContainer button {
     background-color: rgb(2, 2, 24);
-    color: white;
+    color: rgb(255, 255, 255);
     border-radius: 6px;
     font-weight: 800;
     padding: 4px 36px;
@@ -149,6 +149,7 @@
 
     .container {
         flex-direction: column;
+        align-items: center;
         padding: 20px 0;
         gap: 30px;
         text-align: center;
@@ -159,7 +160,8 @@
     }
 
     .textContainer {
-        width: 60%;
+        align-items: center;
+        width: 80%;
     }
 
     .textContainer h1 {
@@ -182,5 +184,21 @@
 
     .description {
         font-size: 10px;
+    }
+}
+
+@media (max-width: 500px) {
+
+    .container {
+        padding: 10px 0;
+    }
+
+    .textContainer button {
+        width: 70%;
+        text-align: center;
+    }
+
+    .description {
+        display: none;
     }
 }

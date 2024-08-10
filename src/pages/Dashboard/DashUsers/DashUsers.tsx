@@ -65,10 +65,15 @@ const DashUsers = (props: Props) => {
                 {user.firstName} {user.lastName}
               </h4>
               {user.isAdmin ? (
-                <span className={styles.adminBadge}>
-                  <FaShieldAlt />
-                  ADMIN
-                </span>
+                <>
+                  <span className={styles.adminBadge}>
+                    <FaShieldAlt />
+                    ADMIN
+                  </span>
+                  <span className={styles.adminIcon}>
+                    <FaShieldAlt />
+                  </span>
+                </>
               ) : (
                 <button
                   onClick={() => handleButtonClick(user._id)}

@@ -20,10 +20,11 @@ type Props = {
 const DashHeader = ({ user }: Props) => {
   return (
     <section className={styles.container}>
-      <div>
-        <span>
-          <FaShieldAlt /> Admin
-        </span>
+      <div className={styles.user}>
+        <div className={styles.adminBlock}>
+          <FaShieldAlt />
+          <span>Admin</span>
+        </div>
         <h2>{user?.firstName}</h2>
       </div>
       <nav className={styles.navigation}>

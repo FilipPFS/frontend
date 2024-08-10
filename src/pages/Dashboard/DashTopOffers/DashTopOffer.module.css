@@ -93,3 +93,33 @@
 .validBtn:hover {
     background-color: rgb(200, 222, 222);
 }
+
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+    .section {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .imgContainer {
+        width: 50%;
+    }
+
+    .infoContainer {
+        width: 90%;
+    }
+
+    .form {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .formInfoContainer {
+        width: 90%;
+    }
+}

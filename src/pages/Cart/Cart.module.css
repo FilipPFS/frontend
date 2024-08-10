@@ -1,9 +1,12 @@
 .container {
     display: flex;
-    padding: 60px;
+    margin: 50px;
+    background-color: rgb(243, 241, 238);
+    border-radius: 15px;
 }
 
 .cartProducts {
+    padding: 20px;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -14,12 +17,21 @@
     display: flex;
     align-items: center;
     gap: 20px;
+    position: relative;
+}
+
+.product:before {
+    position: absolute;
+    content: "";
+    border: 1px solid black;
+    opacity: 0.2;
+    width: 95%;
+    bottom: 0;
 }
 
 .imgContainer {
-    background-color: rgb(243, 241, 238);
     padding: 30px;
-    width: 30%;
+    width: 25%;
     border-radius: 20px;
 }
 
@@ -29,9 +41,10 @@
 
 .infoContainer {
     display: flex;
-    flex-direction: column;
+    align-items: center;
     justify-content: space-between;
-    padding: 40px 0;
+    padding: 20px 30px;
+    width: 70%;
 }
 
 .infoContainer h1 {
@@ -39,20 +52,33 @@
 }
 
 .infoContainer p {
-    font-size: 24px;
+    font-size: 18px;
+}
+
+.titleBlock {
+    width: 33%;
+}
+
+.priceBlock {
+    display: flex;
+    align-items: center;
 }
 
 .adjustQuantity {
     display: flex;
-    justify-content: center;
     text-align: center;
     gap: 10px;
 }
 
+.quantity {
+    border: 1px solid black;
+    padding: 0 10px;
+}
+
 .adjustQuantity span {
-    font-size: 24px;
+    font-weight: 600;
+    font-size: 18px;
     width: 40%;
-    background-color: bisque;
     border-radius: 5px;
     cursor: pointer;
 }
@@ -64,13 +90,24 @@
 .cartBill {
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
     gap: 10px;
     padding: 20px;
-    background-color: rgb(243, 241, 238);
-    border-radius: 15px;
+    background-color: rgb(232, 225, 237);
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
+    min-height: 100%;
+    color: black;
 }
 
-.cartBill button {
+.total {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.billBtn {
     font-size: 15px;
     padding: 10px 15px;
     background-color: lightblue;
@@ -79,18 +116,41 @@
     cursor: pointer;
 }
 
-.cartBill button:hover {
+.billBtn:hover {
     background-color: rgb(175, 182, 188);
 }
 
-.cartBill button:disabled {
+.billBtn:disabled {
     background-color: gray;
     cursor: not-allowed;
 }
 
+.myForm {
+    display: flex;
+    flex-direction: column;
+}
+
 @media (max-width: 1024px) {
+
+    .container {
+        flex-direction: column;
+    }
+
     .imgContainer {
         height: fit-content;
+    }
+
+    .cartProducts {
+        width: 100%;
+    }
+
+    .billContainer {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .cartBill {
+        border-radius: 15px;
     }
 }
 
@@ -115,16 +175,20 @@
 
     .imgContainer {
         padding: 10px;
-        width: 100%;
+        width: 50%;
     }
 
     .infoContainer {
-        padding: 20px;
-        gap: 5px;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 10px;
     }
 
-    .infoContainer h1 {
-        font-size: 32px;
+    .titleBlock {
+        display: flex;
+        justify-content: center;
+        width: 100%;
     }
 
     .billContainer {
@@ -133,5 +197,25 @@
 
     .cartBill h1 {
         font-size: 28px;
+    }
+}
+
+@media (max-width: 500px) {
+    .container {
+        margin: 0;
+        padding: 20px;
+        border-radius: 0%;
+    }
+
+    .cartProducts {
+        padding: 0;
+    }
+
+    .infoContainer {
+        padding: 0;
+    }
+
+    .billContainer {
+        padding: 0;
     }
 }

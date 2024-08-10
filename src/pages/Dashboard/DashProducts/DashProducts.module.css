@@ -41,3 +41,56 @@
 .btn:hover {
     background-color: rgb(94, 145, 211);
 }
+
+.iconLink {
+    display: none;
+}
+
+.iconBtn {
+    background-color: transparent;
+    border: none;
+    display: none;
+}
+
+.icon {
+    cursor: pointer;
+    font-size: 18px;
+    display: none;
+}
+
+.icon:hover {
+    color: blue;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .productImg {
+        width: 15%;
+    }
+
+    .iconLink {
+        display: block;
+    }
+
+    .iconBtn {
+        display: block;
+    }
+
+    .icon {
+        display: block;
+    }
+
+    .btnLink {
+        display: none;
+    }
+
+    .btn {
+        display: none;
+    }
+}

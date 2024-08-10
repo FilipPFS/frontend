@@ -3,6 +3,7 @@ import { deleteProduct } from "../../../features/productSlice";
 import styles from "./DashProducts.module.css";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { FaEdit, FaTrash } from "react-icons/fa";
 
 type Props = {};
 
@@ -30,14 +31,31 @@ const DashProducts = (props: Props) => {
                 className={styles.productImg}
               />
               <h4 className={styles.productTitle}>{product.title}</h4>
-              <Link to={`/dashboard/product/${product._id}`}>
+              <Link
+                to={`/dashboard/product/${product._id}`}
+                className={styles.btnLink}
+              >
                 <button className={styles.btn}>Modifier</button>
+              </Link>
+              <Link
+                to={`/dashboard/product/${product._id}`}
+                className={styles.iconLink}
+              >
+                <button className={styles.iconBtn}>
+                  <FaEdit className={styles.icon} />
+                </button>
               </Link>
               <button
                 onClick={() => handleDelete(product._id)}
                 className={styles.btn}
               >
                 Supprimer
+              </button>
+              <button
+                onClick={() => handleDelete(product._id)}
+                className={styles.iconBtn}
+              >
+                <FaTrash className={styles.icon} />
               </button>
             </div>
           );

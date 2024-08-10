@@ -72,3 +72,40 @@
 .btnBlock button:hover {
     background-color: rgb(159, 189, 189);
 }
+
+@media (max-width: 1024px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .childContainer {
+        flex-direction: column;
+    }
+
+    .imgContainer {
+        width: 50%;
+    }
+
+    .infoContainer {
+        width: 90%;
+    }
+
+    .formInfo {
+        width: 90%;
+    }
+}
+
+@media (max-width: 750px) {
+
+    .imgContainer {
+        width: 65%;
+    }
+
+}

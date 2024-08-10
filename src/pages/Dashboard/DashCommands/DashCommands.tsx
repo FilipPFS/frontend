@@ -31,6 +31,7 @@ const DashCommands = (props: Props) => {
         {commands.map((command) => {
           return (
             <Commands
+              key={command._id}
               _id={command._id}
               userId={command.userId}
               email={command.email}

@@ -39,7 +39,7 @@ const Commands = ({ _id, email, userId, products, amount }: Props) => {
           <div>
             {groupedProducts.map((product) => {
               return (
-                <div className={styles.productBlock}>
+                <div className={styles.productBlock} key={product.productId}>
                   <div className={styles.imgContainer}>
                     <img src={product.img} />
                   </div>

@@ -1,0 +1,82 @@
+.userBlock {
+    margin-top: 12px;
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    width: 100%;
+}
+
+.form input {
+    border-radius: 5px;
+    border: none;
+    padding: 3px 14px;
+    font-size: 13px;
+    box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
+    height: 30px;
+}
+
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.saveButtons {
+    width: 100%;
+    margin-right: auto;
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 10px;
+}
+
+.saveButtons button,
+.addressBtn {
+    background-color: rgb(17, 17, 44);
+    padding: 5px 15px;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.saveButtons button:hover,
+.addressBtn:hover {
+    background-color: rgb(15, 15, 83);
+}
+
+.blockEdit {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btnEdit {
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    border: none;
+}
+
+.btnEditIcon {
+    font-size: 18px;
+    cursor: pointer;
+}
+
+.btnEditIcon:hover {
+    color: blue;
+}
+
+@media (max-width: 750px) {
+    .userBlock {
+        width: 100%;
+    }
+
+    .form {
+        flex-direction: column;
+    }
+}

@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import cartSlice, {
   CartProduct,
   deleteCartItems,
@@ -7,14 +7,31 @@ import cartSlice, {
 import { useCartDispatch, useCartSelector } from "../../store/hooks";
 import { RootState } from "../../store/store";
 import styles from "./Cart.module.css";
-import axios from "axios";
+import axios, { AxiosResponse } from "axios";
 import { loadStripe } from "@stripe/stripe-js";
-import { log } from "console";
+import FormAddress from "../../components/FormAddress/FormAddress";
+import { UserType } from "../Account/Account";
 
 const Cart = () => {
   const userId = localStorage.getItem("userId");
   const dispatch = useCartDispatch();
   const cartItems = useCartSelector((state: RootState) => state.cart.items);
+  const [userInfo, setUserInfo] = useState<UserType>();
+
+  const getUserInfo = async () => {
+    try {
+      const response: AxiosResponse<UserType> = await axios.get(
+        `http://localhost:5000/api/user/${userId}`
+      );
+      setUserInfo(response.data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   const handleAddToCart = (item: CartProduct) => {
     dispatch(cartSlice.actions.addToCart(item));
@@ -94,10 +111,6 @@ const Cart = () => {
     }
   };
 
-  const deleteAll = () => {
-    dispatch(deleteCartItems(userId));
-  };
-
   return (
     <main className={styles.container}>
       <div className={styles.cartProducts}>
@@ -112,9 +125,8 @@ const Cart = () => {
                 <img src={item.img} alt={item.title} />
               </div>
               <div className={styles.infoContainer}>
-                <div>
-                  <h1>{item.title}</h1>
-                  <p>{(item.price / 100).toFixed(2)}€</p>
+                <div className={styles.titleBlock}>
+                  <h3>{item.title}</h3>
                 </div>
                 <div className={styles.adjustQuantity}>
                   <span
@@ -126,10 +138,13 @@ const Cart = () => {
                   >
                     +
                   </span>
-                  <span>{item.quantity}</span>
+                  <span className={styles.quantity}>{item.quantity}</span>
                   <span onClick={() => handleRemoveFromCart(item.productId)}>
                     -
                   </span>
+                </div>
+                <div className={styles.priceBlock}>
+                  <p>{(item.price / 100).toFixed(2)}€</p>
                 </div>
               </div>
             </article>
@@ -138,10 +153,18 @@ const Cart = () => {
       </div>
       <div className={styles.billContainer}>
         <div className={styles.cartBill}>
-          <h1>Total: {formattedTotalPrice}€</h1>
-          <button disabled={!total} onClick={makePayment}>
-            Passer la commande
-          </button>
+          <h2>Recapitulatif</h2>
+          <FormAddress flexDirection="column" />
+          <div className={styles.total}>
+            <h4>Total: {formattedTotalPrice}€</h4>
+            <button
+              disabled={!total || !userInfo?.address}
+              onClick={makePayment}
+              className={styles.billBtn}
+            >
+              Passer la commande
+            </button>
+          </div>
         </div>
       </div>
     </main>

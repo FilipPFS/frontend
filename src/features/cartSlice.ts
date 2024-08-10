@@ -47,7 +47,6 @@ export const deleteCartItems = createAsyncThunk(
   async (userId: string | null) => {
     const response: AxiosResponse<{ user: { cart: CartProduct[] } }> =
       await axios.delete(`http://localhost:5000/api/cart/clear-all/${userId}`);
-    console.log(response);
     return response.data.user.cart;
   }
 );
@@ -61,15 +60,11 @@ export const addCartItem = createAsyncThunk<
     return item;
   }
 
-  console.log("Posting the item", item);
-
   try {
     const response = await axios.post(
       `http://localhost:5000/api/cart/${userId}`,
       item
     );
-
-    console.log(response);
 
     const { lastAddedItem } = response.data;
 

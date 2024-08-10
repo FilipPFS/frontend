@@ -16,8 +16,7 @@
     gap: 10px;
 }
 
-.settings button,
-.saveButtons button {
+.settings button {
     background-color: rgb(17, 17, 44);
     padding: 5px 15px;
     border-radius: 5px;
@@ -26,8 +25,7 @@
     cursor: pointer;
 }
 
-.settings button:hover,
-.saveButtons button:hover {
+.settings button:hover {
     background-color: rgb(15, 15, 83);
 }
 
@@ -35,24 +33,6 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-}
-
-.btnEdit {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    background-color: transparent;
-    border: none;
-}
-
-.btnEditIcon {
-    font-size: 18px;
-    cursor: pointer;
-}
-
-.btnEditIcon:hover {
-    color: blue;
 }
 
 .userBlock {
@@ -70,28 +50,6 @@
     font-size: 13px;
     box-shadow: rgba(0, 0, 0, 0.15) 1.95px 1.95px 2.6px;
     height: 30px;
-}
-
-.form {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.blockEdit {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-}
-
-.saveButtons {
-    width: 100%;
-    margin-right: auto;
-    margin-top: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: flex-end;
-    gap: 10px;
 }
 
 .title {
