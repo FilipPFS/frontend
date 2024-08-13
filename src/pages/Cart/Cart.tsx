@@ -29,8 +29,6 @@ const Cart = () => {
     }
   };
 
-  console.log("Cart", cartItems);
-
   useEffect(() => {
     getUserInfo();
   }, []);
@@ -87,10 +85,7 @@ const Cart = () => {
 
   const makePayment = async () => {
     console.log("makePayment function called");
-    const stripe = await loadStripe(
-      "pk_test_51PiiELRv47bx0DCZur5yn2ItBmbIwz2TfXMkTjGgFN7mScwDKM1uvNLgnwA5osnrPbnNtQ2w0ixeoKbUyMhFytlQ00qTYK92qW" ||
-        ""
-    );
+    const stripe = await loadStripe(process.env.REACT_APP_STRIPE_KEY!);
     const body = {
       products: cartItems,
       userId: userId,
@@ -116,6 +111,10 @@ const Cart = () => {
     } catch (err) {
       console.log("Error during payment process:", err);
     }
+  };
+
+  const handleUserInfoUpdate = (updatedUserInfo: UserType) => {
+    setUserInfo(updatedUserInfo);
   };
 
   return (
@@ -161,7 +160,10 @@ const Cart = () => {
       <div className={styles.billContainer}>
         <div className={styles.cartBill}>
           <h2>Recapitulatif</h2>
-          <FormAddress flexDirection="column" />
+          <FormAddress
+            flexDirection="column"
+            onUpdateUserInfo={handleUserInfoUpdate}
+          />
           <div className={styles.total}>
             <h4>Total: {formattedTotalPrice}€</h4>
             <button

@@ -10,9 +10,10 @@ import { FaRegEdit } from "react-icons/fa";
 
 type FormProps = {
   flexDirection: "row" | "column";
+  onUpdateUserInfo?: (updatedUserInfo: UserType) => void;
 };
 
-const FormAddress = ({ flexDirection }: FormProps) => {
+const FormAddress = ({ flexDirection, onUpdateUserInfo }: FormProps) => {
   const userId = localStorage.getItem("userId");
   const [clicked, setClicked] = useState(false);
   const [userInfo, setUserInfo] = useState<UserType>();
@@ -30,6 +31,9 @@ const FormAddress = ({ flexDirection }: FormProps) => {
         `http://localhost:5000/api/user/${userId}`
       );
       setUserInfo(response.data);
+      if (onUpdateUserInfo) {
+        onUpdateUserInfo(response.data);
+      }
     } catch (err) {
       console.error(err);
     }
@@ -85,7 +89,7 @@ const FormAddress = ({ flexDirection }: FormProps) => {
       );
 
       setClicked(false);
-      getUserInfo();
+      await getUserInfo();
       return response.data;
     } catch (err) {
       console.error(err);
@@ -102,7 +106,7 @@ const FormAddress = ({ flexDirection }: FormProps) => {
       );
 
       setClicked(false);
-      getUserInfo();
+      await getUserInfo();
       return response.data;
     } catch (err) {
       console.error(err);
@@ -132,6 +136,7 @@ const FormAddress = ({ flexDirection }: FormProps) => {
               disabled={clicked ? !userInfo?.address : !!userInfo?.address}
               name="number"
               onChange={handleChange}
+              placeholder="Numéro"
             />
           </div>
           <div className={styles.userBlock}>
@@ -142,6 +147,7 @@ const FormAddress = ({ flexDirection }: FormProps) => {
               disabled={clicked ? !userInfo?.address : !!userInfo?.address}
               name="street"
               onChange={handleChange}
+              placeholder="Nom du rue"
             />
           </div>
           <div className={styles.userBlock}>
@@ -152,6 +158,7 @@ const FormAddress = ({ flexDirection }: FormProps) => {
               disabled={clicked ? !userInfo?.address : !!userInfo?.address}
               name="city"
               onChange={handleChange}
+              placeholder="Ville"
             />
           </div>
           <div className={styles.userBlock}>
@@ -162,6 +169,7 @@ const FormAddress = ({ flexDirection }: FormProps) => {
               disabled={clicked ? !userInfo?.address : !!userInfo?.address}
               name="postalCode"
               onChange={handleChange}
+              placeholder="Code Postal"
             />
           </div>
         </div>

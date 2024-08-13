@@ -8,6 +8,7 @@ type DataForm = {
   firstName: string;
   email: string;
   password: string;
+  phoneNumber: string;
 };
 
 type ServerResponse = {
@@ -22,6 +23,7 @@ const Register = () => {
     firstName: "",
     email: "",
     password: "",
+    phoneNumber: "",
   });
 
   const navigate = useNavigate();
@@ -126,6 +128,15 @@ const Register = () => {
           id="email"
           name="email"
           value={formData.email}
+          onChange={handleChange}
+        />
+        <label className={styles.theLabel}>Numéro de téléphone</label>
+        <input
+          type="text"
+          placeholder="Numéro de téléphone"
+          id="phoneNumber"
+          name="phoneNumber"
+          value={formData.phoneNumber}
           onChange={handleChange}
         />
         <label className={styles.theLabel}>Mot de passe</label>

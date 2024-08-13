@@ -20,7 +20,7 @@ const DashProducts = (props: Props) => {
 
   return (
     <div className={styles.container}>
-      <h2>All Products</h2>
+      <h2>Tous les produits</h2>
       <section className={styles.allProducts}>
         {products.map((product) => {
           return (
